@@ -13,12 +13,20 @@ const pageTitle = "Contact | お問い合わせ";
       </p>
     </div>
 
+    {/* Static Forms 用のフォーム */}
     <form 
-      action="https://formspree.io/f/mvgqadol" 
+      action="https://api.staticforms.xyz/submit" 
       method="POST"
       class="max-w-2xl mx-auto"
     >
-    <input type="hidden" name="_next" value="https://www.munology.com/thanks">
+      <input type="hidden" name="accessKey" value="sf_h80n98l1ea6i0ek7hg3hnc18">
+      <input type="hidden" name="redirectTo" value="https://www.munology.com/thanks">
+      <input type="hidden" name="subject" value="MUNOLOGYサイトからのお問い合わせ">
+      
+      {/* ↓ ここからがreCAPTCHA用の追加部分 ↓ */}
+      <input type="hidden" name="$captcha">
+      {/* ↑ ここまでがreCAPTCHA用の追加部分 ↑ */}
+
       <div class="mb-6">
         <label for="name" class="block mb-2 text-sm font-bold text-gray-300">お名前</label>
         <input 
@@ -49,6 +57,13 @@ const pageTitle = "Contact | お問い合わせ";
           class="w-full px-4 py-3 bg-[#1a1a1a] border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 transition-colors"
         ></textarea>
       </div>
+
+      {/* ↓ ここからがreCAPTCHA用の追加部分 ↓ */}
+      <div class="mb-8 flex justify-center">
+          <div class="g-recaptcha" data-sitekey="6LfAuI8rAAAAAEhxnkrdvIM6Ko3Gu3VkQj-SYYxe"></div>
+      </div>
+      {/* ↑ ここまでがreCAPTCHA用の追加部分 ↑ */}
+
       <div class="text-center">
         <button 
           type="submit"
@@ -59,4 +74,8 @@ const pageTitle = "Contact | お問い合わせ";
       </div>
     </form>
   </div>
+  
+  {/* ↓ ここからがreCAPTCHA用の追加部分 ↓ */}
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  {/* ↑ ここまでがreCAPTCHA用の追加部分 ↑ */}
 </BaseLayout>

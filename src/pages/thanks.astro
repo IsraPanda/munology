@@ -1,0 +1,17 @@
+---
+// src/pages/thanks.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "送信完了 | Contact";
+---
+<BaseLayout pageTitle={pageTitle}>
+  <div class="container mx-auto px-6 py-32 text-center">
+    <h1 class="text-4xl md:text-5xl font-black tracking-tighter mb-4">お問い合わせありがとうございます</h1>
+    <p class="text-lg text-gray-300 mb-8">
+      内容を確認の上、担当者よりご連絡いたします。
+    </p>
+    <a href="/" class="text-white font-bold hover:underline">
+      → トップページに戻る
+    </a>
+  </div>
+</BaseLayout>

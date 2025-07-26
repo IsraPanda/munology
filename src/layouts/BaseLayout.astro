@@ -1,0 +1,29 @@
+---
+// src/layouts/BaseLayout.astro
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const { pageTitle } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{pageTitle} | MUNOLOGY</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body class="bg-[#121212] text-[#E0E0E0] font-sans antialiased">
+    <Header />
+    <main>
+        <!-- ↓このslotに、各ページのユニークなコンテンツが挿入されます -->
+        <slot />
+    </main>
+    <Footer />
+</body>
+</html>

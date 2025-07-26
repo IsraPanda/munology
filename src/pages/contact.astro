@@ -13,82 +13,21 @@ const pageTitle = "Contact | お問い合わせ";
       </p>
     </div>
 
-    {/* Static Forms 用のフォーム */}
-    <form 
-      action="https://api.staticforms.xyz/submit" 
-      method="POST"
-      class="max-w-2xl mx-auto"
-    >
-      <input type="hidden" name="accessKey" value="sf_h80n98l1ea6i0ek7hg3hnc18">
-      <input type="hidden" name="redirectTo" value="https://www.munology.com/thanks">
-      <input type="hidden" name="subject" value="MUNOLOGYサイトからのお問い合わせ">
-      
-      {/* ↓ ここからがreCAPTCHA用の追加部分 ↓ */}
-      <input type="hidden" name="$captcha">
-      {/* ↑ ここまでがreCAPTCHA用の追加部分 ↑ */}
+    {/* ↓ Tallyからコピーしたコードを、ここに貼り付けます ↓ */}
+    <iframe 
+      data-tally-src="https://tally.so/embed/mOMAyM?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" 
+      loading="lazy" 
+      width="100%" 
+      height="452" 
+      frameborder="0" 
+      marginheight="0" 
+      marginwidth="0" 
+      title="MUNOLOGY お問い合わせフォーム">
+    </iframe>
+    <script is:inline>
+      var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}
+    </script>
+    {/* ↑ ここまで ↑ */}
 
-      <div class="mb-6">
-        <label for="name" class="block mb-2 text-sm font-bold text-gray-300">お名前</label>
-        <input 
-          type="text" 
-          id="name" 
-          name="name" 
-          required
-          class="w-full px-4 py-3 bg-[#1a1a1a] border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 transition-colors"
-        >
-      </div>
-      <div class="mb-6">
-        <label for="email" class="block mb-2 text-sm font-bold text-gray-300">メールアドレス</label>
-        <input 
-          type="email" 
-          id="email" 
-          name="email" 
-          required
-          class="w-full px-4 py-3 bg-[#1a1a1a] border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 transition-colors"
-        >
-      </div>
-      <div class="mb-8">
-        <label for="message" class="block mb-2 text-sm font-bold text-gray-300">お問い合わせ内容</label>
-        <textarea 
-          id="message" 
-          name="message" 
-          rows="6" 
-          required
-          class="w-full px-4 py-3 bg-[#1a1a1a] border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 transition-colors"
-        ></textarea>
-      </div>
-      {/* ↓ ここからが自動返信選択用の追加部分 ↓ */}
-      <div class="mb-8 flex items-center">
-        <input 
-          type="checkbox" 
-          id="autoresponse-checkbox" 
-          name="$autoresponse" 
-          value="お問い合わせありがとうございます。以下の内容で承りました。確認の上、担当者よりご連絡いたします。"
-          class="w-4 h-4 text-blue-600 bg-gray-700 border-gray-600 rounded focus:ring-blue-500"
-          checked
-        >
-        <label for="autoresponse-checkbox" class="ml-2 text-sm font-medium text-gray-300">問い合わせ内容の控えを自分にも送信する</label>
-      </div>
-      {/* ↑ ここまでが自動返信選択用の追加部分 ↑ */}
-
-      {/* ↓ ここからがreCAPTCHA用の追加部分 ↓ */}
-      <div class="mb-8 flex justify-center">
-          <div class="g-recaptcha" data-sitekey="6LfAuI8rAAAAAEhxnkrdvIM6Ko3Gu3VkQj-SYYxe"></div>
-      </div>
-      {/* ↑ ここまでがreCAPTCHA用の追加部分 ↑ */}
-
-      <div class="text-center">
-        <button 
-          type="submit"
-          class="bg-white text-black font-bold py-3 px-12 rounded-full inline-block hover:bg-gray-200 transition-all transform hover:scale-105"
-        >
-          送信する
-        </button>
-      </div>
-    </form>
   </div>
-  
-  {/* ↓ ここからがreCAPTCHA用の追加部分 ↓ */}
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  {/* ↑ ここまでがreCAPTCHA用の追加部分 ↑ */}
 </BaseLayout>

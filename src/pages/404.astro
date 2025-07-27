@@ -3,196 +3,176 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const pageTitle = "404 | ページが見つかりません";
+const launchDate = new Date('2025-11-17');
+const currentDate = new Date();
+const isLaunched = currentDate >= launchDate;
 ---
 
-<BaseLayout pageTitle={pageTitle}>
-  <main class="pt-16">
-    <!-- 404 ヒーローセクション -->
-    <section class="relative text-center py-20 md:py-32 px-6 overflow-hidden min-h-screen flex items-center">
-      <!-- 背景のグラデーション -->
-      <div class="absolute inset-0 z-0 opacity-20" style="background: radial-gradient(circle at 50% 30%, rgba(100, 100, 150, 0.5), transparent 70%);"></div>
-      
-      <div class="relative z-10 container mx-auto">
-        <div class="max-w-3xl mx-auto">
-          <!-- 404アイコン -->
-          <div class="flex justify-center mb-12">
-            <div class="relative">
-              <div class="w-40 h-40 bg-gradient-to-br from-gray-800 to-gray-900 rounded-full flex items-center justify-center border-4 border-gray-700 shadow-2xl transform hover:scale-105 transition-transform duration-300">
-                <span class="text-7xl font-black text-gray-400">404</span>
-              </div>
-            </div>
-          </div>
-          
-          <h1 class="text-5xl md:text-7xl font-black mb-8 hero-gradient-text tracking-tight font-noto animate-fade-in">
-            ページが見つかりません
-          </h1>
-          
-          <p class="text-xl md:text-2xl text-gray-300 mb-12 font-noto leading-relaxed max-w-2xl mx-auto">
-            お探しのページは存在しないか、移動または削除された可能性があります。
-            <br>
-            <span class="text-lg text-gray-400">でも、心配いりません。素晴らしいコンテンツがここにあります。</span>
-          </p>
-          
-          <!-- メインナビゲーション -->
-          <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-            <a href="/" class="group relative inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
-              </svg>
-              トップページに戻る
-              <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 rounded-full transition-opacity duration-300"></div>
-            </a>
-            
-            <a href="/articles" class="group relative inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-green-600 to-teal-600 text-white font-bold rounded-full hover:from-green-700 hover:to-teal-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-              </svg>
-              記事を探す
-              <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 rounded-full transition-opacity duration-300"></div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- おすすめコンテンツセクション -->
-    <section class="py-16 md:py-24 relative">
-      <!-- 背景パターン -->
-      <div class="absolute inset-0 opacity-5">
-        <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0); background-size: 20px 20px;"></div>
-      </div>
-      
-      <div class="container mx-auto px-6 relative z-10">
-        <div class="max-w-6xl mx-auto">
-          <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4 font-noto">
-              <span class="text-gray-500 mr-4">§</span>
-              <span class="hero-gradient-text">おすすめコンテンツ</span>
-              <span class="text-gray-500 ml-4">§</span>
-            </h2>
-            <p class="text-gray-400 text-lg font-noto">これらの記事があなたの興味を引くかもしれません</p>
-          </div>
-          
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- カード 1 -->
-            <div class="group card-bg rounded-xl overflow-hidden transform hover:-translate-y-3 transition-all duration-500 shadow-lg hover:shadow-2xl border border-gray-700 hover:border-blue-500">
-              <div class="p-8">
-                <div class="flex items-center justify-between mb-4">
-                  <span class="text-sm text-blue-400 font-bold bg-blue-400 bg-opacity-10 px-3 py-1 rounded-full">最新動向</span>
-                  <span class="text-xs text-gray-500">2024.07.25</span>
+{isLaunched ? (
+  // 公開後は通常の404ページを表示
+  <BaseLayout pageTitle={pageTitle}>
+    <main class="pt-16">
+      <!-- 404 ヒーローセクション -->
+      <section class="relative text-center py-20 md:py-32 px-6 overflow-hidden min-h-screen flex items-center">
+        <!-- 背景のグラデーション -->
+        <div class="absolute inset-0 z-0 opacity-20" style="background: radial-gradient(circle at 50% 30%, rgba(100, 100, 150, 0.5), transparent 70%);"></div>
+        
+        <div class="relative z-10 container mx-auto">
+          <div class="max-w-3xl mx-auto">
+            <!-- 404アイコン -->
+            <div class="flex justify-center mb-12">
+              <div class="relative">
+                <div class="w-40 h-40 bg-gradient-to-br from-gray-800 to-gray-900 rounded-full flex items-center justify-center border-4 border-gray-700 shadow-2xl transform hover:scale-105 transition-transform duration-300">
+                  <span class="text-7xl font-black text-gray-400">404</span>
                 </div>
-                <h3 class="font-bold text-xl mb-4 h-16 font-noto group-hover:text-blue-400 transition-colors">
-                  速報解説：気候変動に関するICJ勧告的意見
-                </h3>
-                <p class="text-gray-400 text-sm h-20 overflow-hidden mb-6 leading-relaxed">
-                  UNFCCCやパリ協定の法的拘束力、Lex Specialisといった法理を解説し、国際法における気候変動問題の新たな展開を分析します。
-                </p>
-                <a href="/articles/icj-climate-change.md" class="inline-flex items-center text-blue-400 hover:text-blue-300 text-sm font-bold group-hover:translate-x-2 transition-all duration-300">
-                  続きを読む 
-                  <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                  </svg>
-                </a>
               </div>
             </div>
             
-            <!-- カード 2 -->
-            <div class="group card-bg rounded-xl overflow-hidden transform hover:-translate-y-3 transition-all duration-500 shadow-lg hover:shadow-2xl border border-gray-700 hover:border-green-500">
-              <div class="p-8">
-                <div class="flex items-center justify-between mb-4">
-                  <span class="text-sm text-green-400 font-bold bg-green-400 bg-opacity-10 px-3 py-1 rounded-full">頻出トピック</span>
-                  <span class="text-xs text-gray-500">2024.07.24</span>
-                </div>
-                <h3 class="font-bold text-xl mb-4 h-16 font-noto group-hover:text-green-400 transition-colors">
-                  徹底解説：内政（不）干渉の原則
-                </h3>
-                <p class="text-gray-400 text-sm h-20 overflow-hidden mb-6 leading-relaxed">
-                  WW2以前から現代のR2P、国際刑事法に至る歴史的変遷を概観。会議で直面するケーススタディを豊富に盛り込みます。
-                </p>
-                <a href="/articles/non-intervention-principle.md" class="inline-flex items-center text-green-400 hover:text-green-300 text-sm font-bold group-hover:translate-x-2 transition-all duration-300">
-                  続きを読む 
-                  <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                  </svg>
-                </a>
-              </div>
-            </div>
+            <h1 class="text-5xl md:text-7xl font-black mb-8 hero-gradient-text tracking-tight font-noto animate-fade-in">
+              ページが見つかりません
+            </h1>
             
-            <!-- カード 3 -->
-            <div class="group card-bg rounded-xl overflow-hidden transform hover:-translate-y-3 transition-all duration-500 shadow-lg hover:shadow-2xl border border-gray-700 hover:border-yellow-500">
-              <div class="p-8">
-                <div class="flex items-center justify-between mb-4">
-                  <span class="text-sm text-yellow-400 font-bold bg-yellow-400 bg-opacity-10 px-3 py-1 rounded-full">サイト情報</span>
-                  <span class="text-xs text-gray-500">About</span>
-                </div>
-                <h3 class="font-bold text-xl mb-4 h-16 font-noto group-hover:text-yellow-400 transition-colors">
-                  About MUNOLOGY
-                </h3>
-                <p class="text-gray-400 text-sm h-20 overflow-hidden mb-6 leading-relaxed">
-                  模擬国連の体験を学問的な探究へと繋げるためのWebサイトです。私たちのミッションとビジョンについて詳しくご紹介します。
-                </p>
-                <a href="/about" class="inline-flex items-center text-yellow-400 hover:text-yellow-300 text-sm font-bold group-hover:translate-x-2 transition-all duration-300">
-                  詳しく見る 
-                  <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                  </svg>
-                </a>
-              </div>
+            <p class="text-xl md:text-2xl text-gray-300 mb-12 font-noto leading-relaxed max-w-2xl mx-auto">
+              お探しのページは存在しないか、移動または削除された可能性があります。
+            </p>
+            
+            <!-- メインナビゲーション -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="/" class="group relative inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                </svg>
+                トップページに戻る
+                <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 rounded-full transition-opacity duration-300"></div>
+              </a>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- お問い合わせセクション -->
-    <section class="py-16 md:py-24 card-bg relative overflow-hidden">
-      <!-- 装飾的な背景要素 -->
-      <div class="absolute top-0 left-0 w-full h-full opacity-10">
-        <div class="absolute top-10 left-10 w-32 h-32 bg-blue-500 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-10 right-10 w-40 h-40 bg-purple-500 rounded-full blur-3xl"></div>
-      </div>
-      
-      <div class="container mx-auto px-6 relative z-10">
-        <div class="max-w-3xl mx-auto text-center">
-          <div class="mb-8">
+      </section>
+    </main>
+  </BaseLayout>
+) : (
+  // Coming Soon期間中はComing Soonページを表示
+  <BaseLayout pageTitle="Coming Soon | MUNOLOGY">
+    <main class="pt-16">
+      <!-- Coming Soon ヒーローセクション -->
+      <section class="relative text-center py-8 md:py-16 px-6 overflow-hidden min-h-[calc(100vh-4rem)] flex items-center">
+        <!-- 背景のグラデーション -->
+        <div class="absolute inset-0 z-0 opacity-20" style="background: radial-gradient(circle at 50% 30%, rgba(100, 100, 150, 0.5), transparent 70%);"></div>
+        
+        <div class="relative z-10 container mx-auto">
+          <div class="max-w-4xl mx-auto">
+            <!-- メインアイコン -->
             <div class="flex justify-center mb-6">
-              <div class="w-16 h-16 bg-blue-500 bg-opacity-10 rounded-full flex items-center justify-center">
-                <svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+              <div class="w-20 h-20 md:w-28 md:h-28 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center border-4 border-gray-700 shadow-2xl transform hover:scale-105 transition-transform duration-300">
+                <svg class="w-10 h-10 md:w-14 md:h-14 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
               </div>
             </div>
-            <h2 class="text-3xl md:text-4xl font-bold mb-6 font-noto">
-              <span class="hero-gradient-text">お探しの情報は？</span>
-            </h2>
-            <p class="text-xl text-gray-300 mb-8 font-noto leading-relaxed">
-              お探しの情報が見つからない場合や、特定のトピックについて詳しく知りたい場合は、お気軽にお問い合わせください。
-              <br>
-              <span class="text-lg text-gray-400">私たちがあなたの学びをサポートします。</span>
-            </p>
-          </div>
-          
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/contact" class="group relative inline-flex items-center justify-center px-10 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold rounded-full hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-              </svg>
-              お問い合わせ
-              <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 rounded-full transition-opacity duration-300"></div>
-            </a>
             
-            <a href="/articles" class="group relative inline-flex items-center justify-center px-10 py-4 bg-transparent border-2 border-gray-600 text-gray-300 font-bold rounded-full hover:border-gray-400 hover:text-white transition-all duration-300 transform hover:scale-105">
-              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-              </svg>
-              記事一覧
-            </a>
+            <h1 class="text-3xl md:text-5xl font-black mb-4 hero-gradient-text tracking-tight font-noto animate-fade-in">
+              Coming Soon
+            </h1>
+            
+            <p class="text-base md:text-lg text-gray-300 mb-4 font-noto leading-relaxed max-w-3xl mx-auto">
+              模擬国連の体験を学問的な探究へと繋げる<br>
+              <span class="text-lg md:text-xl font-bold hero-gradient-text">MUNOLOGY</span>
+            </p>
+            
+            <!-- 公開日 -->
+            <div class="mb-6">
+              <div class="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold py-2 px-4 md:py-3 md:px-6 rounded-full shadow-lg">
+                <div class="text-sm md:text-base">公開予定日</div>
+                <div class="text-lg md:text-xl">2025年11月17日</div>
+              </div>
+            </div>
+            
+            <!-- 説明文 -->
+            <div class="max-w-2xl mx-auto mb-6">
+              <p class="text-sm md:text-base text-gray-300 mb-3 font-noto leading-relaxed">
+                MUNOLOGYは、模擬国連という熱狂の先に、日本の高校生の「知のOS」をアップデートし、
+                未来の国際社会を担うチェンジメーカーを育むエコシステムを創造することを目指しています。
+              </p>
+              <p class="text-xs md:text-sm text-gray-400 font-noto">
+                情報格差の是正というロールズ的な問題意識に基づき、全ての探究者に、
+                大学レベルの「本質的な知」へのアクセスを提供します。
+              </p>
+            </div>
+            
+            <!-- カウントダウン -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3 mb-6 max-w-2xl mx-auto">
+              <div class="card-bg rounded-xl p-2 md:p-3 text-center">
+                <div class="text-lg md:text-xl font-bold text-blue-400" id="days">--</div>
+                <div class="text-xs text-gray-400">日</div>
+              </div>
+              <div class="card-bg rounded-xl p-2 md:p-3 text-center">
+                <div class="text-lg md:text-xl font-bold text-green-400" id="hours">--</div>
+                <div class="text-xs text-gray-400">時間</div>
+              </div>
+              <div class="card-bg rounded-xl p-2 md:p-3 text-center">
+                <div class="text-lg md:text-xl font-bold text-yellow-400" id="minutes">--</div>
+                <div class="text-xs text-gray-400">分</div>
+              </div>
+              <div class="card-bg rounded-xl p-2 md:p-3 text-center">
+                <div class="text-lg md:text-xl font-bold text-purple-400" id="seconds">--</div>
+                <div class="text-xs text-gray-400">秒</div>
+              </div>
+            </div>
+            
+
           </div>
         </div>
-      </div>
-    </section>
-  </main>
-</BaseLayout>
+      </section>
+    </main>
+
+    <script>
+      // カウントダウン機能
+      function updateCountdown() {
+        const launchDate = new Date('2025-11-17T00:00:00').getTime();
+        const now = new Date().getTime();
+        const distance = launchDate - now;
+        
+        if (distance > 0) {
+          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+          
+          const daysElement = document.getElementById('days') as HTMLElement | null;
+          const hoursElement = document.getElementById('hours') as HTMLElement | null;
+          const minutesElement = document.getElementById('minutes') as HTMLElement | null;
+          const secondsElement = document.getElementById('seconds') as HTMLElement | null;
+          
+          if (daysElement) daysElement.textContent = days.toString();
+          if (hoursElement) hoursElement.textContent = hours.toString();
+          if (minutesElement) minutesElement.textContent = minutes.toString();
+          if (secondsElement) secondsElement.textContent = seconds.toString();
+        } else {
+          // 公開日になったらリロード
+          window.location.reload();
+        }
+      }
+      
+
+      
+      // 1秒ごとに更新
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    </script>
+
+    <style>
+      @keyframes fade-in {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      
+      .animate-fade-in {
+        animation: fade-in 0.8s ease-out;
+      }
+    </style>
+  </BaseLayout>
+)}
 
 <style>
   @keyframes fade-in {

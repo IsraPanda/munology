@@ -1,0 +1,150 @@
+---
+// src/pages/coming-soon.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "Coming Soon | MUNOLOGY";
+const launchDate = new Date('2025-11-17');
+const currentDate = new Date();
+const isLaunched = currentDate >= launchDate;
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <main class="pt-16">
+    <!-- Coming Soon ヒーローセクション -->
+    <section class="relative text-center py-20 md:py-32 px-6 overflow-hidden min-h-screen flex items-center">
+      <!-- 背景のグラデーション -->
+      <div class="absolute inset-0 z-0 opacity-20" style="background: radial-gradient(circle at 50% 30%, rgba(100, 100, 150, 0.5), transparent 70%);"></div>
+      
+      <div class="relative z-10 container mx-auto">
+        <div class="max-w-4xl mx-auto">
+          <!-- メインアイコン -->
+          <div class="flex justify-center mb-12">
+            <div class="w-32 h-32 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center border-4 border-gray-700 shadow-2xl transform hover:scale-105 transition-transform duration-300">
+              <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+          </div>
+          
+          <h1 class="text-5xl md:text-7xl font-black mb-8 hero-gradient-text tracking-tight font-noto animate-fade-in">
+            Coming Soon
+          </h1>
+          
+          <p class="text-xl md:text-2xl text-gray-300 mb-8 font-noto leading-relaxed max-w-3xl mx-auto">
+            模擬国連の体験を学問的な探究へと繋げる<br>
+            <span class="text-2xl md:text-3xl font-bold hero-gradient-text">MUNOLOGY</span>
+          </p>
+          
+          <!-- 公開日 -->
+          <div class="mb-12">
+            <div class="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold py-4 px-8 rounded-full shadow-lg">
+              <div class="text-lg md:text-xl">公開予定日</div>
+              <div class="text-2xl md:text-3xl">2025年11月17日</div>
+            </div>
+          </div>
+          
+          <!-- 説明文 -->
+          <div class="max-w-2xl mx-auto mb-16">
+            <p class="text-lg text-gray-300 mb-6 font-noto leading-relaxed">
+              MUNOLOGYは、模擬国連という熱狂の先に、日本の高校生の「知のOS」をアップデートし、
+              未来の国際社会を担うチェンジメーカーを育むエコシステムを創造することを目指しています。
+            </p>
+            <p class="text-gray-400 font-noto">
+              情報格差の是正というロールズ的な問題意識に基づき、全ての探究者に、
+              大学レベルの「本質的な知」へのアクセスを提供します。
+            </p>
+          </div>
+          
+          <!-- カウントダウン -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16 max-w-2xl mx-auto">
+            <div class="card-bg rounded-xl p-4 text-center">
+              <div class="text-2xl md:text-3xl font-bold text-blue-400" id="days">--</div>
+              <div class="text-sm text-gray-400">日</div>
+            </div>
+            <div class="card-bg rounded-xl p-4 text-center">
+              <div class="text-2xl md:text-3xl font-bold text-green-400" id="hours">--</div>
+              <div class="text-sm text-gray-400">時間</div>
+            </div>
+            <div class="card-bg rounded-xl p-4 text-center">
+              <div class="text-2xl md:text-3xl font-bold text-yellow-400" id="minutes">--</div>
+              <div class="text-sm text-gray-400">分</div>
+            </div>
+            <div class="card-bg rounded-xl p-4 text-center">
+              <div class="text-2xl md:text-3xl font-bold text-purple-400" id="seconds">--</div>
+              <div class="text-sm text-gray-400">秒</div>
+            </div>
+          </div>
+          
+          <!-- お知らせ登録 -->
+          <div class="card-bg rounded-xl p-8 max-w-md mx-auto">
+            <div class="flex items-center mb-4">
+              <div class="w-8 h-8 bg-blue-500 bg-opacity-10 rounded-full flex items-center justify-center mr-3">
+                <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5 5v-5zM4 19h6v-2H4v2zM4 15h6v-2H4v2zM4 11h6V9H4v2zM4 7h6V5H4v2z"></path>
+                </svg>
+              </div>
+              <h3 class="font-bold text-lg font-noto">お知らせ登録</h3>
+            </div>
+            <p class="text-gray-400 text-sm mb-4 font-noto">
+              公開時にメールでお知らせします
+            </p>
+            <div class="flex">
+              <input 
+                type="email" 
+                placeholder="メールアドレス" 
+                class="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded-l-lg focus:outline-none focus:border-blue-500 text-gray-300"
+              >
+              <button class="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-r-lg hover:from-blue-700 hover:to-purple-700 transition-all">
+                登録
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<script>
+  // カウントダウン機能
+  function updateCountdown() {
+    const launchDate = new Date('2025-11-17T00:00:00').getTime();
+    const now = new Date().getTime();
+    const distance = launchDate - now;
+    
+    if (distance > 0) {
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      
+      const daysElement = document.getElementById('days') as HTMLElement | null;
+      const hoursElement = document.getElementById('hours') as HTMLElement | null;
+      const minutesElement = document.getElementById('minutes') as HTMLElement | null;
+      const secondsElement = document.getElementById('seconds') as HTMLElement | null;
+      
+      if (daysElement) daysElement.textContent = days.toString();
+      if (hoursElement) hoursElement.textContent = hours.toString();
+      if (minutesElement) minutesElement.textContent = minutes.toString();
+      if (secondsElement) secondsElement.textContent = seconds.toString();
+    } else {
+      // 公開日になったらリロード
+      window.location.reload();
+    }
+  }
+  
+  // 1秒ごとに更新
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
+
+<style>
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 0.8s ease-out;
+  }
+</style> 

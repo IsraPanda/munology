@@ -1,58 +1,137 @@
 ---
 // src/pages/index.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const launchDate = new Date('2025-11-17');
+const currentDate = new Date();
+const isLaunched = currentDate >= launchDate;
 ---
+
+{isLaunched ? (
 <BaseLayout pageTitle="Home">
     <main class="pt-16">
         <!-- ヒーローセクション -->
-        <section class="relative text-center py-20 md:py-32 px-6 overflow-hidden">
+      <section class="relative text-center py-20 md:py-32 px-6 overflow-hidden min-h-screen flex items-center">
              <!-- 背景のグラデーション -->
             <div class="absolute inset-0 z-0 opacity-20" style="background: radial-gradient(circle at 50% 30%, rgba(100, 100, 150, 0.5), transparent 70%);"></div>
             
             <div class="relative z-10 container mx-auto flex flex-col items-center">
                 <!-- メインビジュアル -->
-                <div class="max-w-3xl w-full mb-8">
-                    <img src="http://googleusercontent.com/image_generation_content/3" alt="ガベルがポリゴンに変化するイメージ" class="w-full h-auto object-contain rounded-lg shadow-2xl">
+          <div class="max-w-3xl w-full mb-12 transform hover:scale-105 transition-transform duration-500">
+            <div class="relative">
+              <img src="http://googleusercontent.com/image_generation_content/3" alt="ガベルがポリゴンに変化するイメージ" class="w-full h-auto object-contain rounded-2xl shadow-2xl border border-gray-700">
+            </div>
                 </div>
                 
                 <!-- キャッチコピー -->
-                <h1 class="text-4xl md:text-6xl font-black mb-4 hero-gradient-text tracking-tight font-noto">DRの向こう側へ。<br>そのGSLを、次のレベルへ。</h1>
-                <p class="max-w-2xl text-base md:text-lg text-gray-300 mb-8 font-noto">
+          <h1 class="text-5xl md:text-7xl font-black mb-6 hero-gradient-text tracking-tight font-noto animate-fade-in">
+            DRの向こう側へ。<br>そのGSLを、次のレベルへ。
+          </h1>
+          <p class="max-w-3xl text-xl md:text-2xl text-gray-300 mb-12 font-noto leading-relaxed">
                     MUNOLOGYは、会議の体験をより深い洞察に導き、大学以降の学問へ架橋する試みです。模擬国連に関連したトピックを、法学・政治学の観点から共に探究しましょう。
                 </p>
-                <a href="#" class="cta-button bg-white text-black font-bold py-3 px-8 rounded-full text-lg shadow-lg">
+          
+          <!-- CTAボタン -->
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/articles" class="group relative inline-flex items-center justify-center px-10 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+              </svg>
                     記事を読む
-                </a>
+              <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 rounded-full transition-opacity duration-300"></div>
+            </a>
+            
+            <a href="/about" class="group relative inline-flex items-center justify-center px-10 py-4 bg-transparent border-2 border-gray-600 text-gray-300 font-bold rounded-full hover:border-gray-400 hover:text-white transition-all duration-300 transform hover:scale-105">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              詳しく見る
+            </a>
+          </div>
             </div>
         </section>
 
         <!-- おすすめ記事セクション -->
-        <section id="articles" class="py-12 md:py-24">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center mb-12 font-noto"><span class="text-gray-500">§</span> Featured Articles</h2>
+      <section id="articles" class="py-16 md:py-24 relative">
+        <!-- 背景パターン -->
+        <div class="absolute inset-0 opacity-5">
+          <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0); background-size: 20px 20px;"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 font-noto">
+              <span class="text-gray-500 mr-4">§</span>
+              <span class="hero-gradient-text">Featured Articles</span>
+              <span class="text-gray-500 ml-4">§</span>
+            </h2>
+            <p class="text-gray-400 text-lg font-noto">模擬国連に関連した最新の記事をご紹介</p>
+          </div>
+          
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- 記事カード 1 -->
-                    <div class="card-bg rounded-xl overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 shadow-lg">
-                        <div class="p-6">
-                            <span class="text-sm text-blue-400 font-bold">【最新動向】</span>
-                            <h3 class="font-bold text-xl mt-2 mb-3 h-14 font-noto">速報解説：気候変動に関するICJ勧告的意見</h3>
-                            <p class="text-gray-400 text-sm h-20 overflow-hidden">UNFCCCやパリ協定の法的拘束力、Lex Specialisといった法理を解説し...</p>
+            <div class="group card-bg rounded-xl overflow-hidden transform hover:-translate-y-3 transition-all duration-500 shadow-lg hover:shadow-2xl border border-gray-700 hover:border-blue-500">
+              <div class="p-8">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-sm text-blue-400 font-bold bg-blue-400 bg-opacity-10 px-3 py-1 rounded-full">最新動向</span>
+                  <span class="text-xs text-gray-500">2024.07.25</span>
+                </div>
+                <h3 class="font-bold text-xl mb-4 h-16 font-noto group-hover:text-blue-400 transition-colors">
+                  速報解説：気候変動に関するICJ勧告的意見
+                </h3>
+                <p class="text-gray-400 text-sm h-20 overflow-hidden mb-6 leading-relaxed">
+                  UNFCCCやパリ協定の法的拘束力、Lex Specialisといった法理を解説し、国際法における気候変動問題の新たな展開を分析します。
+                </p>
+                <a href="/articles/icj-climate-change.md" class="inline-flex items-center text-blue-400 hover:text-blue-300 text-sm font-bold group-hover:translate-x-2 transition-all duration-300">
+                  続きを読む 
+                  <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </a>
                         </div>
                     </div>
+            
                     <!-- 記事カード 2 -->
-                    <div class="card-bg rounded-xl overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 shadow-lg">
-                        <div class="p-6">
-                            <span class="text-sm text-green-400 font-bold">【頻出トピック】</span>
-                            <h3 class="font-bold text-xl mt-2 mb-3 h-14 font-noto">徹底解説：内政（不）干渉の原則</h3>
-                            <p class="text-gray-400 text-sm h-20 overflow-hidden">WW2以前から現代のR2P、国際刑事法に至る歴史的変遷を概観。会議で直面するケーススタディを豊富に盛り込む。</p>
+            <div class="group card-bg rounded-xl overflow-hidden transform hover:-translate-y-3 transition-all duration-500 shadow-lg hover:shadow-2xl border border-gray-700 hover:border-green-500">
+              <div class="p-8">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-sm text-green-400 font-bold bg-green-400 bg-opacity-10 px-3 py-1 rounded-full">頻出トピック</span>
+                  <span class="text-xs text-gray-500">2024.07.24</span>
+                </div>
+                <h3 class="font-bold text-xl mb-4 h-16 font-noto group-hover:text-green-400 transition-colors">
+                  徹底解説：内政（不）干渉の原則
+                </h3>
+                <p class="text-gray-400 text-sm h-20 overflow-hidden mb-6 leading-relaxed">
+                  WW2以前から現代のR2P、国際刑事法に至る歴史的変遷を概観。会議で直面するケーススタディを豊富に盛り込みます。
+                </p>
+                <a href="/articles/non-intervention-principle.md" class="inline-flex items-center text-green-400 hover:text-green-300 text-sm font-bold group-hover:translate-x-2 transition-all duration-300">
+                  続きを読む 
+                  <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </a>
                         </div>
                     </div>
+            
                     <!-- 記事カード 3 -->
-                    <div class="card-bg rounded-xl overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 shadow-lg">
-                        <div class="p-6">
-                            <span class="text-sm text-yellow-400 font-bold">【コア文書】</span>
-                            <h3 class="font-bold text-xl mt-2 mb-3 h-14 font-noto">国連憲章から読み解く「内政不干渉」</h3>
-                            <p class="text-gray-400 text-sm h-20 overflow-hidden">なぜ2条7項が置かれたのか。安保理の権限（第7章）との関係性を明確にし、歴史的・構造的理解を深める。</p>
+            <div class="group card-bg rounded-xl overflow-hidden transform hover:-translate-y-3 transition-all duration-500 shadow-lg hover:shadow-2xl border border-gray-700 hover:border-yellow-500">
+              <div class="p-8">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-sm text-yellow-400 font-bold bg-yellow-400 bg-opacity-10 px-3 py-1 rounded-full">コア文書</span>
+                  <span class="text-xs text-gray-500">Coming Soon</span>
+                </div>
+                <h3 class="font-bold text-xl mb-4 h-16 font-noto group-hover:text-yellow-400 transition-colors">
+                  国連憲章から読み解く「内政不干渉」
+                </h3>
+                <p class="text-gray-400 text-sm h-20 overflow-hidden mb-6 leading-relaxed">
+                  なぜ2条7項が置かれたのか。安保理の権限（第7章）との関係性を明確にし、歴史的・構造的理解を深めます。
+                </p>
+                <a href="#" class="inline-flex items-center text-yellow-400 hover:text-yellow-300 text-sm font-bold group-hover:translate-x-2 transition-all duration-300">
+                  準備中 
+                  <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </a>
                         </div>
                     </div>
                 </div>
@@ -60,50 +139,297 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </section>
 
         <!-- Aboutセクション -->
-        <section id="about" class="py-12 md:py-24 card-bg">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl font-bold mb-6 font-noto"><span class="text-gray-500">§</span> About MUNOLOGY</h2>
-                <p class="max-w-3xl mx-auto text-gray-300 leading-relaxed mb-8 font-noto">
-                    私たちは、模擬国連という熱狂の先に、日本の高校生の「知のOS」をアップデートし、未来の国際社会を担うチェンジメーカーを育むエコシステムを創造することを目指しています。情報格差の是正というロールズ的な問題意識に基づき、全ての探究者に、大学レベルの「本質的な知」へのアクセスを提供します。
+      <section id="about" class="py-16 md:py-24 card-bg relative overflow-hidden">
+        <!-- 装飾的な背景要素 -->
+        <div class="absolute top-0 left-0 w-full h-full opacity-10">
+          <div class="absolute top-10 left-10 w-32 h-32 bg-blue-500 rounded-full blur-3xl"></div>
+          <div class="absolute bottom-10 right-10 w-40 h-40 bg-purple-500 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 text-center relative z-10">
+          <div class="max-w-4xl mx-auto">
+            <div class="mb-8">
+              <div class="flex justify-center mb-6">
+                <div class="w-16 h-16 bg-blue-500 bg-opacity-10 rounded-full flex items-center justify-center">
+                  <svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                  </svg>
+                </div>
+              </div>
+              <h2 class="text-3xl md:text-4xl font-bold mb-6 font-noto">
+                <span class="hero-gradient-text">About MUNOLOGY</span>
+              </h2>
+            </div>
+            <p class="text-xl text-gray-300 leading-relaxed mb-12 font-noto">
+              私たちは、模擬国連という熱狂の先に、日本の高校生の「知のOS」をアップデートし、
+              未来の国際社会を担うチェンジメーカーを育むエコシステムを創造することを目指しています。
+            <br><br>
+            <span class="text-lg text-gray-400">情報格差の是正というロールズ的な問題意識に基づき、全ての探究者に、
+              大学レベルの「本質的な知」へのアクセスを提供します。</span>
                 </p>
-                <a href="#" class="text-white font-bold hover:underline">さらに詳しく →</a>
+            <a href="/about" class="group relative inline-flex items-center justify-center px-10 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold rounded-full hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+              </svg>
+              さらに詳しく
+              <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 rounded-full transition-opacity duration-300"></div>
+            </a>
+          </div>
             </div>
         </section>
 
         <!-- カテゴリーセクション -->
-        <section id="categories" class="py-12 md:py-24">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center mb-12 font-noto"><span class="text-gray-500">§</span> Categories</h2>
+      <section id="categories" class="py-16 md:py-24 relative">
+        <!-- 背景パターン -->
+        <div class="absolute inset-0 opacity-5">
+          <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0); background-size: 20px 20px;"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 font-noto">
+              <span class="text-gray-500 mr-4">§</span>
+              <span class="hero-gradient-text">Categories</span>
+              <span class="text-gray-500 ml-4">§</span>
+            </h2>
+            <p class="text-gray-400 text-lg font-noto">学びの分野を選択してください</p>
+          </div>
+          
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
                     <!-- カテゴリー1 -->
-                    <div class="category-icon-bg p-8 rounded-xl">
-                        <div class="flex justify-center mb-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            <div class="group category-icon-bg p-8 rounded-xl transform hover:-translate-y-3 transition-all duration-500 shadow-lg hover:shadow-2xl border border-gray-700 hover:border-yellow-500">
+              <div class="flex justify-center mb-6">
+                <div class="w-16 h-16 bg-yellow-400 bg-opacity-10 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <svg class="w-8 h-8 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
                             </svg>
                         </div>
-                        <h3 class="font-bold text-xl font-noto">コア文書</h3>
+              </div>
+              <h3 class="font-bold text-xl font-noto group-hover:text-yellow-400 transition-colors">コア文書</h3>
+              <p class="text-gray-400 text-sm mt-2">国連憲章や国際法の基本文書</p>
                     </div>
+            
                     <!-- カテゴリー2 -->
-                    <div class="category-icon-bg p-8 rounded-xl">
-                         <div class="flex justify-center mb-4">
-                             <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            <div class="group category-icon-bg p-8 rounded-xl transform hover:-translate-y-3 transition-all duration-500 shadow-lg hover:shadow-2xl border border-gray-700 hover:border-green-500">
+              <div class="flex justify-center mb-6">
+                <div class="w-16 h-16 bg-green-400 bg-opacity-10 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <svg class="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
                             </svg>
                         </div>
-                        <h3 class="font-bold text-xl font-noto">頻出トピック</h3>
+              </div>
+              <h3 class="font-bold text-xl font-noto group-hover:text-green-400 transition-colors">頻出トピック</h3>
+              <p class="text-gray-400 text-sm mt-2">会議でよく扱われるテーマ</p>
                     </div>
+            
                     <!-- カテゴリー3 -->
-                    <div class="category-icon-bg p-8 rounded-xl">
-                        <div class="flex justify-center mb-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            <div class="group category-icon-bg p-8 rounded-xl transform hover:-translate-y-3 transition-all duration-500 shadow-lg hover:shadow-2xl border border-gray-700 hover:border-blue-500">
+              <div class="flex justify-center mb-6">
+                <div class="w-16 h-16 bg-blue-400 bg-opacity-10 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                  </svg>
+                </div>
+              </div>
+              <h3 class="font-bold text-xl font-noto group-hover:text-blue-400 transition-colors">最新動向</h3>
+              <p class="text-gray-400 text-sm mt-2">国際社会の最新の動き</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </BaseLayout>
+) : (
+  // Coming Soonページの内容をここに直接埋め込み
+  <BaseLayout pageTitle="Coming Soon | MUNOLOGY">
+    <main class="pt-16">
+      <!-- Coming Soon ヒーローセクション -->
+      <section class="relative text-center py-8 md:py-16 px-6 overflow-hidden min-h-[calc(100vh-4rem)] flex items-center">
+        <!-- 背景のグラデーション -->
+        <div class="absolute inset-0 z-0 opacity-20" style="background: radial-gradient(circle at 50% 30%, rgba(100, 100, 150, 0.5), transparent 70%);"></div>
+        
+        <div class="relative z-10 container mx-auto">
+          <div class="max-w-4xl mx-auto">
+            <!-- メインアイコン -->
+            <div class="flex justify-center mb-6">
+              <div class="w-20 h-20 md:w-28 md:h-28 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center border-4 border-gray-700 shadow-2xl transform hover:scale-105 transition-transform duration-300">
+                <svg class="w-10 h-10 md:w-14 md:h-14 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
                         </div>
-                        <h3 class="font-bold text-xl font-noto">最新動向</h3>
+            </div>
+            
+            <h1 class="text-3xl md:text-5xl font-black mb-4 hero-gradient-text tracking-tight font-noto animate-fade-in">
+              Coming Soon
+            </h1>
+            
+            <p class="text-base md:text-lg text-gray-300 mb-4 font-noto leading-relaxed max-w-3xl mx-auto">
+              模擬国連の体験を学問的な探究へと繋げる<br>
+              <span class="text-lg md:text-xl font-bold hero-gradient-text">MUNOLOGY</span>
+            </p>
+            
+            <!-- 公開日 -->
+            <div class="mb-6">
+              <div class="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold py-2 px-4 md:py-3 md:px-6 rounded-full shadow-lg">
+                <div class="text-sm md:text-base">公開予定日</div>
+                <div class="text-lg md:text-xl">2025年11月17日</div>
+              </div>
+            </div>
+            
+            <!-- 説明文 -->
+            <div class="max-w-2xl mx-auto mb-6">
+              <p class="text-sm md:text-base text-gray-300 mb-3 font-noto leading-relaxed">
+                MUNOLOGYは、模擬国連という熱狂の先に、日本の高校生の「知のOS」をアップデートし、
+                未来の国際社会を担うチェンジメーカーを育むエコシステムを創造することを目指しています。
+              </p>
+              <p class="text-xs md:text-sm text-gray-400 font-noto">
+                情報格差の是正というロールズ的な問題意識に基づき、全ての探究者に、
+                大学レベルの「本質的な知」へのアクセスを提供します。
+              </p>
+            </div>
+            
+            <!-- カウントダウン -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3 mb-6 max-w-2xl mx-auto">
+              <div class="card-bg rounded-xl p-2 md:p-3 text-center">
+                <div class="text-lg md:text-xl font-bold text-blue-400" id="days">--</div>
+                <div class="text-xs text-gray-400">日</div>
+              </div>
+              <div class="card-bg rounded-xl p-2 md:p-3 text-center">
+                <div class="text-lg md:text-xl font-bold text-green-400" id="hours">--</div>
+                <div class="text-xs text-gray-400">時間</div>
+              </div>
+              <div class="card-bg rounded-xl p-2 md:p-3 text-center">
+                <div class="text-lg md:text-xl font-bold text-yellow-400" id="minutes">--</div>
+                <div class="text-xs text-gray-400">分</div>
+              </div>
+              <div class="card-bg rounded-xl p-2 md:p-3 text-center">
+                <div class="text-lg md:text-xl font-bold text-purple-400" id="seconds">--</div>
+                <div class="text-xs text-gray-400">秒</div>
+              </div>
+                    </div>
+            
+            <!-- お知らせ登録 -->
+            <div class="card-bg rounded-xl p-4 md:p-6 max-w-md mx-auto">
+              <div class="flex items-center mb-3 md:mb-4">
+                <div class="w-6 h-6 md:w-8 md:h-8 bg-blue-500 bg-opacity-10 rounded-full flex items-center justify-center mr-2 md:mr-3">
+                  <svg class="w-3 h-3 md:w-4 md:h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5 5v-5zM4 19h6v-2H4v2zM4 15h6v-2H4v2zM4 11h6V9H4v2zM4 7h6V5H4v2z"></path>
+                  </svg>
+                </div>
+                <h3 class="font-bold text-base md:text-lg font-noto">お知らせ登録</h3>
+              </div>
+              <p class="text-gray-400 text-xs md:text-sm mb-3 md:mb-4 font-noto">
+                公開時にメールでお知らせします
+              </p>
+              <form id="emailForm" class="flex flex-col sm:flex-row gap-2">
+                <input 
+                  type="email" 
+                  id="emailInput"
+                  placeholder="メールアドレス" 
+                  required
+                  class="flex-1 px-3 md:px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg sm:rounded-l-lg sm:rounded-r-none focus:outline-none focus:border-blue-500 text-gray-300 text-sm"
+                >
+                <button 
+                  type="submit"
+                  class="px-4 md:px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-lg sm:rounded-l-none sm:rounded-r-lg hover:from-blue-700 hover:to-purple-700 transition-all text-sm"
+                >
+                  登録
+                </button>
+              </form>
+              <div id="emailMessage" class="mt-3 text-sm hidden"></div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+    
+    <script>
+      // カウントダウン機能
+      function updateCountdown() {
+        const launchDate = new Date('2025-11-17T00:00:00').getTime();
+        const now = new Date().getTime();
+        const distance = launchDate - now;
+        
+        if (distance > 0) {
+          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+          
+          const daysElement = document.getElementById('days');
+          const hoursElement = document.getElementById('hours');
+          const minutesElement = document.getElementById('minutes');
+          const secondsElement = document.getElementById('seconds');
+          
+          if (daysElement) daysElement.textContent = days.toString();
+          if (hoursElement) hoursElement.textContent = hours.toString();
+          if (minutesElement) minutesElement.textContent = minutes.toString();
+          if (secondsElement) secondsElement.textContent = seconds.toString();
+        } else {
+          // 公開日になったらリロード
+          window.location.reload();
+        }
+      }
+      
+      // メールアドレス収集機能
+      const emailForm = document.getElementById('emailForm');
+      const emailInput = document.getElementById('emailInput') as HTMLInputElement | null;
+      const messageDiv = document.getElementById('emailMessage');
+      
+      if (emailForm && emailInput && messageDiv) {
+        emailForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          const email = emailInput.value;
+          
+          if (email) {
+            // ここでメールアドレスを処理（例：ローカルストレージに保存、APIに送信など）
+            localStorage.setItem('munology_email', email);
+            
+            messageDiv.textContent = '登録ありがとうございます！公開時にメールでお知らせします。';
+            messageDiv.className = 'mt-3 text-sm text-green-400';
+            messageDiv.classList.remove('hidden');
+            
+            emailInput.value = '';
+            
+            // 3秒後にメッセージを非表示
+            setTimeout(() => {
+              messageDiv.classList.add('hidden');
+            }, 3000);
+          } else {
+            messageDiv.textContent = 'メールアドレスを入力してください。';
+            messageDiv.className = 'mt-3 text-sm text-red-400';
+            messageDiv.classList.remove('hidden');
+          }
+        });
+      }
+      
+      // 1秒ごとに更新
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    </script>
+    
+    <style>
+      @keyframes fade-in {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      
+      .animate-fade-in {
+        animation: fade-in 0.8s ease-out;
+      }
+    </style>
 </BaseLayout>
+)}
+
+<style>
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 0.8s ease-out;
+  }
+</style>

@@ -1,0 +1,16 @@
+{
+  "typescript.preferences.includePackageJsonAutoImports": "off",
+  "typescript.suggest.autoImports": false,
+  "typescript.validate.enable": true,
+  "typescript.preferences.includeCompletionsForModuleExports": false,
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": false
+  },
+  "typescript.preferences.includeCompletionsWithSnippetText": false,
+  "typescript.suggest.enabled": true,
+  "typescript.suggest.includeCompletionsWithInsertText": false,
+  "astro.enableCodeLens": true,
+  "astro.enableTypeScript": true
+}

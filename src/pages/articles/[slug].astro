@@ -1,0 +1,85 @@
+---
+// src/pages/articles/[slug].astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+// 動的ルートの生成
+export async function getStaticPaths() {
+  const articles = await getCollection('articles');
+  return articles.map((article) => ({
+    params: { slug: article.id },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+const { Content } = await article.render();
+---
+
+<BaseLayout pageTitle={article.data.title}>
+  <main class="pt-16">
+    <!-- 記事ヘッダー -->
+    <section class="relative py-20 md:py-32 px-6 overflow-hidden">
+      <!-- 背景のグラデーション -->
+      <div class="absolute inset-0 z-0 opacity-20" style="background: radial-gradient(circle at 50% 30%, rgba(100, 100, 150, 0.5), transparent 70%);"></div>
+      
+      <div class="relative z-10 container mx-auto">
+        <div class="max-w-4xl mx-auto">
+          <!-- メタ情報 -->
+          <div class="flex items-center justify-between mb-6">
+            <span class="text-sm text-blue-400 font-bold">{article.data.category}</span>
+            <span class="text-sm text-gray-500">{new Date(article.data.date).toLocaleDateString('ja-JP')}</span>
+          </div>
+          
+          <!-- タイトル -->
+          <h1 class="text-3xl md:text-5xl font-black mb-6 hero-gradient-text tracking-tight font-noto">
+            {article.data.title}
+          </h1>
+          
+          <!-- 説明 -->
+          <p class="text-lg md:text-xl text-gray-300 mb-8 font-noto leading-relaxed">
+            {article.data.description}
+          </p>
+          
+          <!-- タグ -->
+          <div class="flex flex-wrap gap-2 mb-8">
+            {article.data.tags.map((tag: string) => (
+              <span class="text-sm bg-gray-700 px-3 py-1 rounded-full text-gray-300">
+                {tag}
+              </span>
+            ))}
+          </div>
+          
+          <!-- 著者情報 -->
+          <div class="flex items-center text-sm text-gray-400">
+            <span>著者: {article.data.author}</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 記事本文 -->
+    <section class="py-12 md:py-24">
+      <div class="container mx-auto px-6">
+        <article class="max-w-4xl mx-auto">
+          <div class="card-bg rounded-xl p-8 md:p-12">
+            <div class="markdown-content">
+              <Content />
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ナビゲーション -->
+    <section class="py-12">
+      <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto text-center">
+          <a href="/articles" class="inline-block bg-white text-black font-bold py-3 px-8 rounded-full hover:bg-gray-200 transition-all transform hover:scale-105">
+            ← 記事一覧に戻る
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout> 

@@ -3,6 +3,16 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const pageTitle = "About | MUNOLOGYについて";
+
+// 本番環境でComing Soonモードを有効にする
+const isProduction = import.meta.env.PROD;
+const currentPath = Astro.url.pathname;
+const isContactPage = currentPath === '/contact' || currentPath === '/contact/';
+
+// 本番環境でContactページ以外の場合のみComing Soonを表示
+if (isProduction && !isContactPage) {
+  return Astro.redirect('/coming-soon');
+}
 ---
 
 <BaseLayout pageTitle={pageTitle}>

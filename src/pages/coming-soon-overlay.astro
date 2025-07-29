@@ -1,0 +1,20 @@
+---
+// Coming Soonオーバーレイページ
+// 本番環境でのみ表示される
+const isProduction = import.meta.env.PROD;
+const currentPath = Astro.url.pathname;
+const isContactPage = currentPath === '/contact' || currentPath === '/contact/';
+
+// 本番環境でContactページ以外の場合のみComing Soonを表示
+if (isProduction && !isContactPage) {
+  return Astro.redirect('/coming-soon');
+}
+---
+
+<!-- このページは開発環境でのみ表示される -->
+<div class="min-h-screen bg-[#121212] text-[#E0E0E0] flex items-center justify-center">
+  <div class="text-center">
+    <h1 class="text-4xl font-bold mb-4">開発モード</h1>
+    <p class="text-xl">Coming Soonオーバーレイは本番環境でのみ表示されます</p>
+  </div>
+</div> 

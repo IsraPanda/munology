@@ -3,7 +3,6 @@
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import ComingSoonOverlay from "../components/ComingSoonOverlay.astro";
 
 const { pageTitle } = Astro.props;
 ---
@@ -73,6 +72,5 @@ const { pageTitle } = Astro.props;
             <slot />
         </main>
         <Footer />
-        <ComingSoonOverlay />
     </body>
 </html>

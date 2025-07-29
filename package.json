@@ -16,6 +16,7 @@
     "test": "echo \"No tests specified\" && exit 0"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.4.2",
     "@astrojs/tailwind": "^6.0.2",
     "@tailwindcss/vite": "^4.1.11",
     "astro": "^5.12.3",

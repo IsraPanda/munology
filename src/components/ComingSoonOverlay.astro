@@ -1,7 +1,7 @@
 ---
 // Coming Soonオーバーレイコンポーネント
 // 本番環境でのみ表示される（Contactページを除く）
-const isComingSoonMode = process.env.COMING_SOON_MODE === 'true';
+const isComingSoonMode = import.meta.env.PROD;
 const currentPath = Astro.url.pathname;
 const isContactPage = currentPath === '/contact' || currentPath === '/contact/';
 ---

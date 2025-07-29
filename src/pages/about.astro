@@ -1,22 +1,14 @@
 ---
 // src/pages/about.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ComingSoonWrapper from '../components/ComingSoonWrapper.astro';
 
 const pageTitle = "About | MUNOLOGYについて";
-
-// 本番環境でComing Soonモードを有効にする
-const isProduction = import.meta.env.PROD;
-const currentPath = Astro.url.pathname;
-const isContactPage = currentPath === '/contact' || currentPath === '/contact/';
-
-// 本番環境でContactページ以外の場合のみComing Soonを表示
-if (isProduction && !isContactPage) {
-  return Astro.redirect('/coming-soon');
-}
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <main class="pt-16">
+  <ComingSoonWrapper>
+    <main class="pt-16">
     <!-- ヒーローセクション -->
     <section class="relative text-center py-20 md:py-32 px-6 overflow-hidden">
       <!-- 背景のグラデーション -->
@@ -195,4 +187,5 @@ if (isProduction && !isContactPage) {
       </div>
     </section>
   </main>
+  </ComingSoonWrapper>
 </BaseLayout> 

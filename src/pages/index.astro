@@ -1,24 +1,16 @@
 ---
 // src/pages/index.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ComingSoonWrapper from '../components/ComingSoonWrapper.astro';
 
 const launchDate = new Date('2025-11-17');
 const currentDate = new Date();
 const isLaunched = currentDate >= launchDate;
-
-// 本番環境でComing Soonモードを有効にする
-const isProduction = import.meta.env.PROD;
-const currentPath = Astro.url.pathname;
-const isContactPage = currentPath === '/contact' || currentPath === '/contact/';
-
-// 本番環境でContactページ以外の場合のみComing Soonを表示
-if (isProduction && !isContactPage) {
-  return Astro.redirect('/coming-soon');
-}
 ---
 
 {isLaunched ? (
 <BaseLayout pageTitle="Home">
+  <ComingSoonWrapper>
     <main class="pt-16">
         <!-- ヒーローセクション -->
       <section class="relative text-center py-20 md:py-32 px-6 overflow-hidden min-h-screen flex items-center">
@@ -249,7 +241,8 @@ if (isProduction && !isContactPage) {
         </div>
       </section>
     </main>
-  </BaseLayout>
+  </ComingSoonWrapper>
+</BaseLayout>
 ) : (
   // Coming Soonページの内容をここに直接埋め込み
   <BaseLayout pageTitle="Coming Soon | MUNOLOGY">

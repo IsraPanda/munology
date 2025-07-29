@@ -1,0 +1,90 @@
+---
+// Coming Soonラッパーコンポーネント
+// 本番環境でのみComing Soonコンテンツを表示
+const isProduction = import.meta.env.PROD;
+const currentPath = Astro.url.pathname;
+const isContactPage = currentPath === '/contact' || currentPath === '/contact/';
+
+// 本番環境でContactページ以外の場合のみComing Soonを表示
+const showComingSoon = isProduction && !isContactPage;
+---
+
+{showComingSoon ? (
+  <!-- Coming Soonコンテンツ -->
+  <div class="min-h-screen bg-[#121212] text-[#E0E0E0] flex items-center justify-center">
+    <div class="text-center max-w-6xl mx-auto px-6">
+      <!-- メインアイコン（タイポグラフィ） -->
+      <div class="flex justify-center mb-16">
+        <img src="./images/typo_dark_rev2.svg" alt="MUNOLOGY" class="h-24 md:h-32 w-auto opacity-90 hover:opacity-100 transition-opacity duration-300" />
+      </div>
+      
+      <!-- Coming Soon タイトル -->
+      <h1 class="text-6xl md:text-8xl lg:text-9xl font-black mb-12 hero-gradient-text tracking-tight font-noto animate-fade-in" style="line-height: 2;">
+        Coming Soon
+      </h1>
+      
+      <!-- サブタイトル -->
+      <p class="text-xl md:text-2xl text-gray-300 mb-16 font-noto">
+        模擬国連から始める探究
+      </p>
+      
+      <!-- 公開予定日 -->
+      <div class="mb-16">
+        <h2 class="text-2xl md:text-3xl text-gray-300 mb-4 font-noto">
+          公開予定日
+        </h2>
+        <p class="text-xl md:text-2xl text-blue-400 font-bold font-noto">
+          2025年11月17日
+        </p>
+      </div>
+      
+      <!-- MUNOLOGYとは -->
+      <div class="max-w-4xl mx-auto mb-16">
+        <h2 class="text-2xl md:text-3xl text-gray-300 mb-8 font-noto leading-relaxed">
+          MUNOLOGYとは
+        </h2>
+        <p class="text-xl md:text-2xl text-gray-300 mb-8 font-noto leading-relaxed">
+          MUNOLOGYは、もぎこっかーのための<span class="font-bold text-blue-400">国際法・国際関係情報サイト</span>です。
+        </p>
+        <p class="text-lg md:text-xl text-gray-400 font-noto leading-relaxed mb-6">
+          "Beyond the conference"を掲げ、会議<span class="font-semibold text-purple-400">「後」</span>に重点を置いたコンテンツを提供していきます。<br>
+          とくに、法学・政治学に関する<span class="font-semibold text-purple-400">よりハイレベルな探究</span>につながる知見を提供することで、
+          会議後の熱を学びに変換していくことをサポートします。
+        </p>
+        <h2 class="text-2xl md:text-3xl text-gray-300 mb-8 font-noto leading-relaxed">
+          提供予定コンテンツ
+        </h2>
+        <p class="text-lg md:text-xl text-gray-400 font-noto text-center mb-8">
+          MUNOLOGYでは、次のようなコンテンツを提供し、もぎこっかーの学びをサポートする予定です。
+        </p>
+        <ul class="list-disc list-inside text-lg md:text-xl text-gray-400 font-noto text-left max-w-3xl mx-auto space-y-2">
+          <li>もぎこっかーのための国際法・国際政治の基礎知識</li>
+          <li>最新の国際法動向解説</li>
+          <li>模擬国連頻出ワード・トピック分析</li>
+          <li>模擬国連参加者のためのガイド</li>
+          <li>先生方向けコンテンツ：模擬国連サポートのためのガイド</li>
+        </ul>
+      </div>
+      
+      <!-- 公開予定日詳細 -->
+      <div class="max-w-4xl mx-auto mb-16">
+        <h2 class="text-2xl md:text-3xl text-gray-300 mb-8 font-noto leading-relaxed">
+          公開予定日
+        </h2>
+        <p class="text-lg md:text-xl text-gray-400 font-noto text-center mb-8">
+          公開予定日は2025年11月17日です。公開まで今しばらくお待ちください。
+        </p>
+      </div>
+      
+      <!-- お問合せリンク -->
+      <div class="text-center">
+        <a href="/contact" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-colors duration-300">
+          お問合せはこちら
+        </a>
+      </div>
+    </div>
+  </div>
+) : (
+  <!-- 通常のコンテンツ -->
+  <slot />
+)} 

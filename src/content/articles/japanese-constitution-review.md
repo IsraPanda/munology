@@ -70,37 +70,17 @@ draft: false
 
 ## 購入リンク
 
-<div class="amazon-affiliate-link my-8">
-  <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg shadow-lg p-6 border border-blue-200">
-    <div class="text-center">
-      <!-- アイコン -->
-      <div class="flex justify-center mb-4">
-        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
-          <span class="text-2xl">📚</span>
-        </div>
-      </div>
-      
-      <!-- 商品情報 -->
-      <div class="mb-6">
-        <h3 class="text-xl font-bold text-gray-900 mb-2">長谷部恭男『日本国憲法』</h3>
-        <p class="text-gray-600 mb-3">憲法改正論議の前に読むべき一冊</p>
-        <div class="flex items-center justify-center mb-4">
-          <div class="flex text-yellow-400">
-            <span>★★★★★</span>
-          </div>
-          <span class="text-sm text-gray-500 ml-2">(4.5/5)</span>
-        </div>
-        <p class="text-sm text-gray-500 mb-4">岩波文庫 | 長谷部恭男著</p>
-      </div>
-      
-      <!-- 購入ボタン -->
-      <a href="https://amzn.to/4o8C38S" target="_blank" rel="noopener noreferrer" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-8 rounded-lg transition-colors duration-300 shadow-md text-lg">
-        📚 Amazonで購入する
-      </a>
-    </div>
-    <p class="text-xs text-gray-500 mt-4 text-center">※このリンクはアフィリエイトリンクです</p>
-  </div>
-</div>
+本書は、憲法改正論議が活発化する現在において、私たちが憲法の本質を理解するための重要な参考書です。模擬国連参加者にとって、自国の憲法を理解することは、国際法や国際関係を学ぶ上で不可欠な基盤となります。
+
+**📚 長谷部恭男『日本国憲法』**  
+*憲法改正論議の前に読むべき一冊*
+
+★★★★★ (4.5/5)  
+*岩波文庫 | 長谷部恭男著*
+
+[**📚 Amazonで購入する**](https://amzn.to/4o8C38S)
+
+*※このリンクはアフィリエイトリンクです*
 
 ## 関連書籍
 

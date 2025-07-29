@@ -16,65 +16,90 @@ const isLaunched = currentDate >= launchDate;
       <div class="absolute inset-0 z-0 opacity-20" style="background: radial-gradient(circle at 50% 30%, rgba(100, 100, 150, 0.5), transparent 70%);"></div>
       
       <div class="relative z-10 container mx-auto">
-        <div class="max-w-4xl mx-auto">
-          <!-- メインアイコン -->
-          <div class="flex justify-center mb-12">
-            <div class="w-32 h-32 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center border-4 border-gray-700 shadow-2xl transform hover:scale-105 transition-transform duration-300">
-              <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-              </svg>
-            </div>
+        <div class="max-w-6xl mx-auto">
+          <!-- メインアイコン（タイポグラフィに変更） -->
+          <div class="flex justify-center mb-16">
+            <img src="/images/typo_dark_rev2.svg" alt="MUNOLOGY" class="h-24 md:h-32 w-auto opacity-90 hover:opacity-100 transition-opacity duration-300" />
           </div>
           
-          <h1 class="text-5xl md:text-7xl font-black mb-8 hero-gradient-text tracking-tight font-noto animate-fade-in">
+          <!-- Coming Soon表示（より大きく、目立つように） -->
+          <h1 class="text-6xl md:text-8xl lg:text-9xl font-black mb-12 hero-gradient-text tracking-tight font-noto animate-fade-in" style="line-height: 2;">
             Coming Soon
           </h1>
           
-          <p class="text-xl md:text-2xl text-gray-300 mb-8 font-noto leading-relaxed max-w-3xl mx-auto">
-            模擬国連の体験を学問的な探究へと繋げる<br>
-            <span class="text-2xl md:text-3xl font-bold hero-gradient-text">MUNOLOGY</span>
+          <!-- サブタイトル -->
+          <p class="text-2xl md:text-3xl lg:text-4xl text-gray-300 mb-12 font-noto leading-relaxed max-w-5xl mx-auto">
+            模擬国連から始める探究<br>
           </p>
           
           <!-- 公開日 -->
-          <div class="mb-12">
-            <div class="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold py-4 px-8 rounded-full shadow-lg">
-              <div class="text-lg md:text-xl">公開予定日</div>
-              <div class="text-2xl md:text-3xl">2025年11月17日</div>
+          <div class="mb-16">
+            <div class="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold py-6 px-12 rounded-full shadow-2xl transform hover:scale-105 transition-transform duration-300">
+              <div class="text-xl md:text-2xl">公開予定日</div>
+              <div class="text-3xl md:text-4xl">2025年11月17日</div>
             </div>
           </div>
           
-          <!-- 説明文 -->
-          <div class="max-w-2xl mx-auto mb-16">
-            <p class="text-lg text-gray-300 mb-6 font-noto leading-relaxed">
-              MUNOLOGYは、模擬国連という熱狂の先に、日本の高校生の「知のOS」をアップデートし、
-              未来の国際社会を担うチェンジメーカーを育むエコシステムを創造することを目指しています。
+          <!-- 新しい紹介文 -->
+          <div class="max-w-4xl mx-auto mb-16">
+            <h2 class="text-2xl md:text-3xl text-gray-300 mb-8 font-noto leading-relaxed">
+              MUNOLOGYとは
+            </h2>
+            <p class="text-xl md:text-2xl text-gray-300 mb-8 font-noto leading-relaxed">
+              MUNOLOGYは、もぎこっかーのための<span class="font-bold text-blue-400">国際法・国際関係情報サイト</span>です。
             </p>
-            <p class="text-gray-400 font-noto">
-              情報格差の是正というロールズ的な問題意識に基づき、全ての探究者に、
-              大学レベルの「本質的な知」へのアクセスを提供します。
+            <p class="text-lg md:text-xl text-gray-400 font-noto leading-relaxed mb-6">
+              "Beyond the conference"を掲げ、会議<span class="font-semibold text-purple-400">「後」</span>に重点を置いたコンテンツを提供していきます。<br>
+              とくに、法学・政治学に関する<span class="font-semibold text-purple-400">よりハイレベルな探究</span>につながる知見を提供することで、
+              会議後の熱を学びに変換していくことをサポートします。
             </p>
+            <h2 class="text-2xl md:text-3xl text-gray-300 mb-8 font-noto leading-relaxed">
+              提供予定コンテンツ
+            </h2>
+                         <p class="text-lg md:text-xl text-gray-400 font-noto text-center mb-8">
+               MUNOLOGYでは、次のようなコンテンツを提供し、もぎこっかーの学びをサポートする予定です。
+             </p>
+             <ul class="list-disc list-inside text-lg md:text-xl text-gray-400 font-noto text-left max-w-3xl mx-auto space-y-2">
+               <li>もぎこっかーのための国際法・国際政治の基礎知識</li>
+               <li>最新の国際法動向解説</li>
+               <li>模擬国連頻出ワード・トピック分析</li>
+               <li>模擬国連参加者のためのガイド</li>
+               <li>先生方向けコンテンツ：模擬国連サポートのためのガイド</li>
+             </ul>
           </div>
           
           <!-- カウントダウン -->
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16 max-w-2xl mx-auto">
-            <div class="card-bg rounded-xl p-4 text-center">
-              <div class="text-2xl md:text-3xl font-bold text-blue-400" id="days">--</div>
-              <div class="text-sm text-gray-400">日</div>
+          <div class="max-w-4xl mx-auto mb-16">
+            <h2 class="text-2xl md:text-3xl text-gray-300 mb-8 font-noto leading-relaxed">
+              公開予定日
+            </h2>
+            <p class="text-lg md:text-xl text-gray-400 font-noto text-center mb-8">
+              公開予定日は2025年11月17日です。公開まで今しばらくお待ちください。
+            </p>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16 max-w-4xl mx-auto">
+            <div class="card-bg rounded-xl p-6 text-center transform hover:scale-105 transition-transform duration-300">
+              <div class="text-3xl md:text-4xl font-bold text-blue-400" id="days">--</div>
+              <div class="text-sm md:text-base text-gray-400">日</div>
             </div>
-            <div class="card-bg rounded-xl p-4 text-center">
-              <div class="text-2xl md:text-3xl font-bold text-green-400" id="hours">--</div>
-              <div class="text-sm text-gray-400">時間</div>
+            <div class="card-bg rounded-xl p-6 text-center transform hover:scale-105 transition-transform duration-300">
+              <div class="text-3xl md:text-4xl font-bold text-green-400" id="hours">--</div>
+              <div class="text-sm md:text-base text-gray-400">時間</div>
             </div>
-            <div class="card-bg rounded-xl p-4 text-center">
-              <div class="text-2xl md:text-3xl font-bold text-yellow-400" id="minutes">--</div>
-              <div class="text-sm text-gray-400">分</div>
+            <div class="card-bg rounded-xl p-6 text-center transform hover:scale-105 transition-transform duration-300">
+              <div class="text-3xl md:text-4xl font-bold text-yellow-400" id="minutes">--</div>
+              <div class="text-sm md:text-base text-gray-400">分</div>
             </div>
-            <div class="card-bg rounded-xl p-4 text-center">
-              <div class="text-2xl md:text-3xl font-bold text-purple-400" id="seconds">--</div>
-              <div class="text-sm text-gray-400">秒</div>
+            <div class="card-bg rounded-xl p-6 text-center transform hover:scale-105 transition-transform duration-300">
+              <div class="text-3xl md:text-4xl font-bold text-purple-400" id="seconds">--</div>
+              <div class="text-sm md:text-base text-gray-400">秒</div>
             </div>
           </div>
-          
+          </div>
+
+          <!--お問合せフォームへの誘導 -->
+          <div class="max-w-4xl mx-auto mb-16">
+            <a href="/contact" class="text-lg md:text-xl text-gray-400 font-noto text-center mb-8">お問合せは<span class="text-blue-400">こちら</span></a>
+          </div>
 
         </div>
       </div>

@@ -71,27 +71,32 @@ draft: false
 ## 購入リンク
 
 <div class="amazon-affiliate-link my-8">
-  <div class="bg-white rounded-lg shadow-lg p-6 border border-gray-200">
-    <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
-      <!-- 商品画像 -->
-      <div class="flex-shrink-0">
-        <img src="/images/japanese-constitution-book.jpg" alt="長谷部恭男『日本国憲法』" class="w-32 h-40 object-cover rounded-md shadow-md" />
+  <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg shadow-lg p-6 border border-blue-200">
+    <div class="text-center">
+      <!-- アイコン -->
+      <div class="flex justify-center mb-4">
+        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
+          <span class="text-2xl">📚</span>
+        </div>
       </div>
       
       <!-- 商品情報 -->
-      <div class="flex-1 text-center md:text-left">
-        <h3 class="text-lg font-bold text-gray-900 mb-2">長谷部恭男『日本国憲法』</h3>
+      <div class="mb-6">
+        <h3 class="text-xl font-bold text-gray-900 mb-2">長谷部恭男『日本国憲法』</h3>
         <p class="text-gray-600 mb-3">憲法改正論議の前に読むべき一冊</p>
-        <div class="flex items-center justify-center md:justify-start mb-4">
+        <div class="flex items-center justify-center mb-4">
           <div class="flex text-yellow-400">
             <span>★★★★★</span>
           </div>
           <span class="text-sm text-gray-500 ml-2">(4.5/5)</span>
         </div>
-        <a href="https://amzn.to/4o8C38S" target="_blank" rel="noopener noreferrer" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 shadow-md">
-          📚 Amazonで購入する
-        </a>
+        <p class="text-sm text-gray-500 mb-4">岩波文庫 | 長谷部恭男著</p>
       </div>
+      
+      <!-- 購入ボタン -->
+      <a href="https://amzn.to/4o8C38S" target="_blank" rel="noopener noreferrer" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-8 rounded-lg transition-colors duration-300 shadow-md text-lg">
+        📚 Amazonで購入する
+      </a>
     </div>
     <p class="text-xs text-gray-500 mt-4 text-center">※このリンクはアフィリエイトリンクです</p>
   </div>

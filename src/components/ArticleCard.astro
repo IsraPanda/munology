@@ -1,0 +1,90 @@
+---
+// src/components/ArticleCard.astro
+export interface Props {
+  title: string;
+  description: string;
+  category: string;
+  date: Date;
+  tags: string[];
+  slug: string;
+  image?: string;
+}
+
+const { title, description, category, date, tags, slug, image } = Astro.props;
+
+// カテゴリーに応じた色を設定
+const getCategoryColor = (category: string) => {
+  switch (category) {
+    case '最新動向':
+      return 'blue';
+    case '頻出トピック':
+      return 'green';
+    case 'コア文書':
+      return 'yellow';
+    case '学問的探究':
+      return 'purple';
+    default:
+      return 'gray';
+  }
+};
+
+const categoryColor = getCategoryColor(category);
+---
+
+<article class={`group card-bg rounded-xl overflow-hidden transform hover:-translate-y-2 transition-all duration-300 shadow-lg hover:shadow-2xl border-2 border-transparent hover:border-${categoryColor}-400/50 hover:shadow-${categoryColor}-500/20`}>
+  {image && (
+    <div class="relative h-48 overflow-hidden">
+      <img 
+        src={image} 
+        alt={title}
+        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+    </div>
+  )}
+  
+  <div class="p-6">
+    <div class="flex items-center justify-between mb-3">
+      <span class={`text-sm text-${categoryColor}-400 font-bold bg-${categoryColor}-400 bg-opacity-10 px-3 py-1 rounded-full group-hover:bg-${categoryColor}-400 group-hover:bg-opacity-20 transition-all duration-300`}>
+        {category}
+      </span>
+      <span class="text-xs text-gray-500">
+        {new Date(date).toLocaleDateString('ja-JP')}
+      </span>
+    </div>
+    
+    <h2 class="font-bold text-xl mb-3 h-16 font-noto line-clamp-2">
+      <a href={`/articles/${slug}`} class={`hover:text-${categoryColor}-400 transition-colors`}>
+        {title}
+      </a>
+    </h2>
+    
+    <p class="text-gray-400 text-sm h-20 overflow-hidden mb-4">
+      {description}
+    </p>
+    
+    <div class="flex flex-wrap gap-2 mb-4">
+      {tags.slice(0, 3).map((tag: string) => (
+        <span class="text-xs bg-gray-700 px-2 py-1 rounded-full text-gray-300">
+          {tag}
+        </span>
+      ))}
+    </div>
+    
+    <a href={`/articles/${slug}`} class={`inline-flex items-center text-${categoryColor}-400 hover:text-${categoryColor}-300 text-sm font-bold group-hover:translate-x-2 transition-all duration-300`}>
+      続きを読む
+      <svg class={`w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+      </svg>
+    </a>
+  </div>
+</article>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style> 

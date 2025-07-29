@@ -4,9 +4,10 @@
 const isProduction = import.meta.env.PROD;
 const currentPath = Astro.url.pathname;
 const isContactPage = currentPath === '/contact' || currentPath === '/contact/';
+const isThanksPage = currentPath === '/thanks' || currentPath === '/thanks/';
 
-// 本番環境でContactページ以外の場合のみComing Soonを表示
-const showComingSoon = isProduction && !isContactPage;
+// 本番環境でContactページとThanksページ以外の場合のみComing Soonを表示
+const showComingSoon = isProduction && !isContactPage && !isThanksPage;
 ---
 
 {showComingSoon ? (

@@ -30,18 +30,18 @@
 - Author (`/author`)
 - Coming Soon (`/coming-soon`)
 
-### **✅ 実装済み**
+### **✅ Coming Soon実装済み**
 - トップページ (`/`)
 - About (`/about`)
 - Articles (`/articles`)
 - Author (`/author`)
 - Coming Soon (`/coming-soon`)
-- Thanks (`/thanks`) - 新規実装
 - 404 (`/404`) - 既に実装済み
 - 記事ページ（`/articles/[slug]`） - 新規実装
 
 ### **❌ Coming Soon対象外**
 - Contact (`/contact`) - お問い合わせ用のため対象外
+- Thanks (`/thanks`) - 問い合わせ完了確認用のため対象外
 
 ## 📝 Google Search Console提出用
 

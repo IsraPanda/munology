@@ -1,12 +1,13 @@
 ---
-title: "Markdown書式テスト記事：国際法における多様な要素の検証"
-description: "この記事は、Markdownの全ての書式要素をテストするために作成された架空の記事です。見出し、リスト、強調、リンク、画像、コードブロック、表、引用など全ての要素を含んでいます。"
+title: "Markdownテスト記事"
+description: "Markdownの各種機能をテストするための記事です。"
 author: "MUNOLOGY編集部"
-date: 2024-12-01T00:00:00.000Z
-category: "テスト記事"
-tags: ["Markdown", "テスト", "国際法", "模擬国連", "法解釈"]
+date: 2024-12-24T00:00:00.000Z
+category: "テスト"
+tags: ["テスト", "Markdown"]
 image: ""
 draft: false
+id: "006"
 ---
 
 # Markdown書式テスト記事：国際法における多様な要素の検証

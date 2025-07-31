@@ -6,9 +6,10 @@ const currentPath = Astro.url.pathname;
 const isContactPage = currentPath === '/contact' || currentPath === '/contact/';
 const isThanksPage = currentPath === '/thanks' || currentPath === '/thanks/';
 const isSitemapPage = currentPath.startsWith('/sitemap') || currentPath.startsWith('/robots.txt');
+const isPrivacyPolicyPage = currentPath === '/privacy-policy' || currentPath === '/privacy-policy/';
 
-// 本番環境でContactページ、Thanksページ、サイトマップ以外の場合のみComing Soonを表示
-const showComingSoon = isProduction && !isContactPage && !isThanksPage && !isSitemapPage;
+// 本番環境でContactページ、Thanksページ、サイトマップ、プライバシーポリシーページ以外の場合のみComing Soonを表示
+const showComingSoon = isProduction && !isContactPage && !isThanksPage && !isSitemapPage && !isPrivacyPolicyPage;
 ---
 
 {showComingSoon ? (

@@ -15,70 +15,117 @@ export async function getStaticPaths() {
 
 const { article } = Astro.props as { article: any };
 const { Content } = await article.render();
+
+// 現在のURLを取得
+const currentUrl = new URL(Astro.request.url);
+const shareUrl = currentUrl.href;
+const shareTitle = article.data.title;
 ---
 
 <BaseLayout pageTitle={article.data.title}>
   <ComingSoonWrapper>
     <main class="pt-16">
     <!-- 記事ヘッダー -->
-    <section class="relative py-20 md:py-32 px-6 overflow-hidden">
+    <section class="relative py-16 md:py-24 px-6 overflow-hidden">
       <!-- 背景のグラデーション -->
-      <div class="absolute inset-0 z-0 opacity-20" style="background: radial-gradient(circle at 50% 30%, rgba(100, 100, 150, 0.5), transparent 70%);"></div>
+      <div class="absolute inset-0 z-0 opacity-10" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(147, 51, 234, 0.1) 100%);"></div>
 
       <div class="relative z-10 container mx-auto">
         <div class="max-w-4xl mx-auto">
           <!-- メタ情報 -->
-          <div class="flex items-center justify-between mb-6">
-            <span class="text-sm text-blue-400 font-bold">{article.data.category}</span>
-            <span class="text-sm text-gray-500">{new Date(article.data.date).toLocaleDateString('ja-JP')}</span>
+          <div class="flex items-center justify-between mb-8">
+            <span class="text-sm text-blue-400 font-semibold tracking-wide uppercase">{article.data.category}</span>
+            <span class="text-sm text-gray-400 font-medium">{new Date(article.data.date).toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
           </div>
 
           <!-- タイトル -->
-          <h1 class="text-3xl md:text-5xl font-black mb-6 hero-gradient-text tracking-tight font-noto">
+          <h1 class="text-3xl md:text-5xl font-black mb-8 hero-gradient-text tracking-tight font-noto leading-tight">
             {article.data.title}
           </h1>
 
           <!-- 説明 -->
-          <p class="text-lg md:text-xl text-gray-300 mb-8 font-noto leading-relaxed">
+          <p class="text-lg md:text-xl text-gray-200 mb-10 font-noto leading-relaxed max-w-3xl">
             {article.data.description}
           </p>
 
           <!-- タグ -->
-          <div class="flex flex-wrap gap-2 mb-8">
+          <div class="flex flex-wrap gap-3 mb-10">
             {article.data.tags.map((tag: string) => (
-              <span class="text-sm bg-gray-700 px-3 py-1 rounded-full text-gray-300">
+              <span class="text-sm bg-gray-800/50 px-4 py-2 rounded-full text-gray-300 border border-gray-700/50 backdrop-blur-sm">
                 {tag}
               </span>
             ))}
           </div>
 
           <!-- 著者情報 -->
-          <div class="flex items-center text-sm text-gray-400">
-            <span>著者: {article.data.author}</span>
+          <div class="flex items-center text-sm text-gray-400 border-t border-gray-700/50 pt-6">
+            <span class="font-medium">著者: {article.data.author}</span>
           </div>
         </div>
       </div>
     </section>
 
     <!-- 記事本文 -->
-    <section class="py-12 md:py-24">
+    <section class="py-12 md:py-20">
       <div class="container mx-auto px-6">
         <article class="max-w-4xl mx-auto">
-          <div class="card-bg rounded-xl p-8 md:p-12">
-            <div class="markdown-content prose prose-invert prose-lg max-w-none">
-              <Content />
-            </div>
+          <div class="markdown-content">
+            <Content />
           </div>
         </article>
       </div>
     </section>
 
-    <!-- ナビゲーション -->
+    <!-- シェアセクション -->
     <section class="py-12">
       <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto">
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-6 p-8 bg-gray-800/30 backdrop-blur-sm rounded-2xl border border-gray-700/50">
+            <div class="text-center sm:text-left">
+              <h3 class="text-xl font-bold text-gray-100 mb-3">この記事をシェア</h3>
+              <p class="text-gray-400 leading-relaxed">役立つ情報を他の方にも共有しましょう</p>
+            </div>
+            <div class="flex gap-4">
+              <!-- URLコピーボタン -->
+              <button 
+                id="copyUrlBtn"
+                class="flex items-center gap-3 px-6 py-3 bg-gray-700/50 hover:bg-gray-600/50 text-gray-200 rounded-xl transition-all duration-300 hover:scale-105 border border-gray-600/50 backdrop-blur-sm"
+                title="URLをコピー"
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                </svg>
+                <span class="font-medium">コピー</span>
+              </button>
+              
+              <!-- X（Twitter）シェアボタン -->
+              <a 
+                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareTitle)}&url=${encodeURIComponent(shareUrl)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-3 px-6 py-3 bg-blue-600/80 hover:bg-blue-500/80 text-white rounded-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm"
+                title="Xでシェア"
+              >
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+                <span class="font-medium">シェア</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ナビゲーション -->
+    <section class="py-16">
+      <div class="container mx-auto px-6">
         <div class="max-w-4xl mx-auto text-center">
-          <a href="/articles" class="inline-block bg-white text-black font-bold py-3 px-8 rounded-full hover:bg-gray-200 transition-all transform hover:scale-105">
-            ← 記事一覧に戻る
+          <a href="/articles" class="inline-flex items-center gap-3 bg-gray-800/50 hover:bg-gray-700/50 text-gray-200 font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:scale-105 border border-gray-700/50 backdrop-blur-sm">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
+            記事一覧に戻る
           </a>
         </div>
       </div>
@@ -87,104 +134,33 @@ const { Content } = await article.render();
   </ComingSoonWrapper>
 </BaseLayout>
 
-<style>
-  .markdown-content {
-    color: #e5e7eb;
-  }
-  
-  .markdown-content h1,
-  .markdown-content h2,
-  .markdown-content h3,
-  .markdown-content h4,
-  .markdown-content h5,
-  .markdown-content h6 {
-    color: #f3f4f6;
-    font-weight: bold;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-  }
-  
-  .markdown-content h1 {
-    font-size: 2rem;
-    border-bottom: 2px solid #374151;
-    padding-bottom: 0.5rem;
-  }
-  
-  .markdown-content h2 {
-    font-size: 1.5rem;
-    border-bottom: 1px solid #374151;
-    padding-bottom: 0.25rem;
-  }
-  
-  .markdown-content h3 {
-    font-size: 1.25rem;
-  }
-  
-  .markdown-content p {
-    margin-bottom: 1rem;
-    line-height: 1.75;
-  }
-  
-  .markdown-content ul,
-  .markdown-content ol {
-    margin-bottom: 1rem;
-    padding-left: 1.5rem;
-  }
-  
-  .markdown-content li {
-    margin-bottom: 0.5rem;
-  }
-  
-  .markdown-content blockquote {
-    border-left: 4px solid #3b82f6;
-    padding-left: 1rem;
-    margin: 1.5rem 0;
-    font-style: italic;
-    color: #9ca3af;
-  }
-  
-  .markdown-content code {
-    background-color: #374151;
-    padding: 0.125rem 0.25rem;
-    border-radius: 0.25rem;
-    font-size: 0.875rem;
-  }
-  
-  .markdown-content pre {
-    background-color: #1f2937;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    overflow-x: auto;
-    margin: 1.5rem 0;
-  }
-  
-  .markdown-content pre code {
-    background-color: transparent;
-    padding: 0;
-  }
-  
-  .markdown-content strong {
-    color: #f3f4f6;
-    font-weight: bold;
-  }
-  
-  .markdown-content em {
-    color: #d1d5db;
-    font-style: italic;
-  }
-  
-  .markdown-content a {
-    color: #3b82f6;
-    text-decoration: underline;
-  }
-  
-  .markdown-content a:hover {
-    color: #60a5fa;
-  }
-  
-  .markdown-content hr {
-    border: none;
-    border-top: 1px solid #374151;
-    margin: 2rem 0;
-  }
-</style> 
+<script>
+  // URLコピー機能
+  document.getElementById('copyUrlBtn')?.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      const btn = document.getElementById('copyUrlBtn');
+      if (btn) {
+        const originalText = btn.innerHTML;
+        btn.innerHTML = `
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span class="text-sm">コピー完了</span>
+        `;
+        btn.classList.add('bg-green-600', 'hover:bg-green-500');
+        btn.classList.remove('bg-gray-700', 'hover:bg-gray-600');
+        
+        setTimeout(() => {
+          btn.innerHTML = originalText;
+          btn.classList.remove('bg-green-600', 'hover:bg-green-500');
+          btn.classList.add('bg-gray-700', 'hover:bg-gray-600');
+        }, 2000);
+      }
+    } catch (err) {
+      console.error('URLのコピーに失敗しました:', err);
+    }
+  });
+</script>
+
+ 

@@ -2,94 +2,306 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Markdown Content Styles */
+/* シンプル・スタイリッシュ・洗練されたMarkdownコンテンツスタイル */
 @layer components {
   .markdown-content {
-    @apply text-gray-300 leading-relaxed;
+    @apply text-gray-200 leading-relaxed font-noto;
+    font-size: 1.125rem;
+    line-height: 1.8;
+    letter-spacing: 0.025em;
   }
 
+  /* 見出し - 洗練されたカラーリングと階層構造 */
   .markdown-content h1 {
-    @apply text-3xl md:text-4xl font-black mb-6 mt-8 text-white;
+    @apply text-3xl md:text-4xl font-black mb-8 mt-12 text-center;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #ffffff 0%, #e5e7eb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
   .markdown-content h2 {
-    @apply text-2xl md:text-3xl font-bold mb-4 mt-6 text-white;
+    @apply text-2xl md:text-3xl font-bold mb-6 mt-10;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+    color: #f3f4f6;
+    position: relative;
+    padding-bottom: 0.75rem;
+  }
+
+  .markdown-content h2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 3rem;
+    height: 3px;
+    background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 100%);
+    border-radius: 2px;
   }
 
   .markdown-content h3 {
-    @apply text-xl md:text-2xl font-bold mb-3 mt-5 text-white;
+    @apply text-xl md:text-2xl font-bold mb-4 mt-8;
+    line-height: 1.5;
+    color: #e5e7eb;
+    border-left: 4px solid #3b82f6;
+    padding-left: 1rem;
   }
 
   .markdown-content h4 {
-    @apply text-lg md:text-xl font-bold mb-2 mt-4 text-white;
+    @apply text-lg md:text-xl font-semibold mb-3 mt-6;
+    line-height: 1.5;
+    color: #d1d5db;
+    position: relative;
+    padding-left: 0.5rem;
   }
 
+  .markdown-content h4::before {
+    content: "◆";
+    color: #8b5cf6;
+    font-size: 0.8em;
+    margin-right: 0.5rem;
+  }
+
+  .markdown-content h5 {
+    @apply text-base md:text-lg font-semibold mb-2 mt-4;
+    color: #9ca3af;
+    border-bottom: 1px solid #374151;
+    padding-bottom: 0.25rem;
+  }
+
+  .markdown-content h6 {
+    @apply text-sm md:text-base font-semibold mb-2 mt-4;
+    color: #6b7280;
+    font-style: italic;
+  }
+
+  /* 段落 - 読みやすい行間と文字間隔 */
   .markdown-content p {
-    @apply mb-4 text-gray-300 leading-relaxed;
+    @apply mb-6 text-gray-200 leading-relaxed;
+    line-height: 1.8;
+    text-align: justify;
+    hyphens: auto;
   }
 
+  /* リスト - シンプルで統一感のあるデザイン */
   .markdown-content ul {
-    @apply mb-4 pl-6 list-disc text-gray-300;
+    @apply mb-6 pl-8 text-gray-200;
+    list-style-type: none;
+  }
+
+  .markdown-content ul li {
+    @apply mb-3 relative;
+    line-height: 1.7;
+  }
+
+  .markdown-content ul li::before {
+    content: "◆";
+    @apply font-bold absolute;
+    left: -1.5rem;
+    color: #8b5cf6;
+    font-size: 0.8em;
   }
 
   .markdown-content ol {
-    @apply mb-4 pl-6 list-decimal text-gray-300;
+    @apply mb-6 pl-8 text-gray-200;
+    counter-reset: list-counter;
   }
 
-  .markdown-content li {
-    @apply mb-2;
+  .markdown-content ol li {
+    @apply mb-3 relative;
+    line-height: 1.7;
+    counter-increment: list-counter;
   }
 
+  .markdown-content ol li::before {
+    content: counter(list-counter) ".";
+    @apply font-bold absolute;
+    left: -2rem;
+    color: #3b82f6;
+  }
+
+  /* ネストしたリスト */
+  .markdown-content ul ul,
+  .markdown-content ol ol,
+  .markdown-content ul ol,
+  .markdown-content ol ul {
+    @apply mt-2 mb-2;
+  }
+
+  /* 引用 - 洗練されたデザイン */
   .markdown-content blockquote {
-    @apply border-l-4 border-blue-500 pl-4 py-2 my-4 bg-gray-800 bg-opacity-50 italic;
+    @apply pl-6 py-4 my-8 italic;
+    border-left: 4px solid;
+    border-image: linear-gradient(180deg, #3b82f6 0%, #8b5cf6 100%) 1;
+    background: linear-gradient(90deg, rgba(59, 130, 246, 0.08) 0%, rgba(139, 92, 246, 0.04) 100%);
+    border-radius: 0 0.5rem 0.5rem 0;
+    position: relative;
   }
 
+  .markdown-content blockquote::before {
+    content: "\201C";
+    position: absolute;
+    top: -0.5rem;
+    left: 1rem;
+    font-size: 3rem;
+    color: #8b5cf6;
+    opacity: 0.3;
+    font-family: serif;
+  }
+
+  .markdown-content blockquote p {
+    @apply mb-0;
+    color: #9ca3af;
+    font-style: italic;
+    line-height: 1.7;
+  }
+
+  /* コード - モダンで読みやすい */
   .markdown-content code {
-    @apply bg-gray-800 px-2 py-1 rounded text-sm font-mono text-blue-300;
+    @apply px-2 py-1 rounded text-sm font-mono;
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+    color: #60a5fa;
+    border: 1px solid #374151;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
   }
 
   .markdown-content pre {
-    @apply bg-gray-800 p-4 rounded-lg overflow-x-auto mb-4;
+    @apply p-6 rounded-lg overflow-x-auto mb-6;
+    background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+    border: 1px solid #374151;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3), 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+
+  .markdown-content pre::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 100%);
+    border-radius: 0.5rem 0.5rem 0 0;
   }
 
   .markdown-content pre code {
-    @apply bg-transparent p-0 text-gray-300;
+    @apply bg-transparent p-0 text-gray-200 border-0;
   }
 
+  /* リンク - シンプルで洗練された */
   .markdown-content a {
-    @apply text-blue-400 hover:text-blue-300 underline;
+    @apply text-blue-400 transition-all duration-200;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
   }
 
+  .markdown-content a:hover {
+    @apply text-blue-300;
+    border-bottom-color: #60a5fa;
+  }
+
+  /* 強調 - 読みやすいコントラスト */
   .markdown-content strong {
     @apply font-bold text-white;
   }
 
   .markdown-content em {
-    @apply italic;
+    @apply italic text-gray-200;
   }
 
+  /* テーブル - モダンで洗練された */
   .markdown-content table {
-    @apply w-full border-collapse mb-4;
+    @apply w-full border-collapse mb-8 rounded-lg overflow-hidden;
+    background: rgba(31, 41, 55, 0.8);
+    border: 1px solid #374151;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
 
   .markdown-content th {
-    @apply bg-gray-800 border border-gray-700 px-4 py-2 text-left font-bold;
+    @apply bg-gray-800 px-6 py-4 text-left font-bold text-white;
+    border-bottom: 2px solid #374151;
   }
 
   .markdown-content td {
-    @apply border border-gray-700 px-4 py-2;
+    @apply border-b border-gray-700 px-6 py-4 text-gray-200;
   }
 
+  .markdown-content tr:hover {
+    background: rgba(59, 130, 246, 0.05);
+  }
+
+  /* 画像 - シンプルで美しい */
   .markdown-content img {
-    @apply max-w-full h-auto rounded-lg shadow-lg my-4;
+    @apply max-w-full h-auto rounded-lg my-8 mx-auto;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    border: 1px solid #374151;
   }
 
+  /* 水平線 - 洗練された */
   .markdown-content hr {
-    @apply border-gray-700 my-8;
+    @apply border-gray-700 my-12;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, #374151 50%, transparent 100%);
+  }
+
+  /* チェックリスト */
+  .markdown-content input[type="checkbox"] {
+    @apply mr-3;
+  }
+
+  /* 定義リスト */
+  .markdown-content dl {
+    @apply mb-6;
+  }
+
+  .markdown-content dt {
+    @apply font-bold text-white mb-2;
+  }
+
+  .markdown-content dd {
+    @apply text-gray-200 mb-4 ml-4;
+  }
+
+  /* 脚注 */
+  .markdown-content .footnotes {
+    @apply mt-12 pt-8 border-t border-gray-700;
+  }
+
+  .markdown-content .footnotes ol {
+    @apply pl-4;
+  }
+
+  .markdown-content .footnotes li {
+    @apply mb-2 text-sm text-gray-400;
+  }
+
+  /* 折りたたみセクション */
+  .markdown-content details {
+    @apply mb-6;
+  }
+
+  .markdown-content summary {
+    @apply cursor-pointer font-semibold text-gray-200 mb-4;
+    padding: 1rem;
+    background: rgba(55, 65, 81, 0.5);
+    border-radius: 0.5rem;
+    border: 1px solid #374151;
+  }
+
+  .markdown-content summary:hover {
+    background: rgba(55, 65, 81, 0.7);
+  }
+
+  .markdown-content details > div {
+    @apply pl-4;
   }
 }
 
-/* Custom utility classes */
+/* カスタムユーティリティクラス */
 @layer utilities {
   .hero-gradient-text {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -112,5 +324,46 @@
 
   .font-noto {
     font-family: 'Noto Sans JP', sans-serif;
+  }
+
+  /* レスポンシブ対応 */
+  @media (max-width: 768px) {
+    .markdown-content {
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .markdown-content h1 {
+      @apply text-2xl;
+      line-height: 1.4;
+    }
+
+    .markdown-content h2 {
+      @apply text-xl;
+      line-height: 1.5;
+    }
+
+    .markdown-content h3 {
+      @apply text-lg;
+      line-height: 1.5;
+    }
+
+    .markdown-content ul,
+    .markdown-content ol {
+      @apply pl-6;
+    }
+
+    .markdown-content pre {
+      @apply p-4;
+    }
+
+    .markdown-content table {
+      @apply text-sm;
+    }
+
+    .markdown-content th,
+    .markdown-content td {
+      @apply px-3 py-2;
+    }
   }
 }

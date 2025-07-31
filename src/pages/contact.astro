@@ -46,103 +46,80 @@ const pageTitle = "Contact | お問い合わせ";
             
             <!-- Brevo Form -->
             <style>
-              @font-face {
-                font-display: block;
-                font-family: Roboto;
-                src: url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/7529907e9eaf8ebb5220c5f9850e3811.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/25c678feafdc175a70922a116c9be3e7.woff) format("woff")
-              }
-              @font-face {
-                font-display: fallback;
-                font-family: Roboto;
-                font-weight: 600;
-                src: url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/6e9caeeafb1f3491be3e32744bc30440.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/71501f0d8d5aa95960f6475d5487d4c2.woff) format("woff")
-              }
-              @font-face {
-                font-display: fallback;
-                font-family: Roboto;
-                font-weight: 700;
-                src: url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/3ef7cf158f310cf752d5ad08cd0e7e60.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/ece3a1d82f18b60bcce0211725c476aa.woff) format("woff")
-              }
-
               /* Tally.so風ダークフォームスタイル */
               #sib-container, #sib-container * {
-                font-family: 'Noto Sans JP', 'Noto Sans', 'Helvetica Neue', Arial, 'Meiryo', sans-serif !important;
-                color: #e0e0e0 !important;
+                font-family: 'Noto Sans JP', 'Noto Sans', 'Helvetica Neue', Arial, 'Meiryo', sans-serif;
+                color: #e0e0e0;
                 background: none;
               }
               #sib-container {
-                background: #181818 !important;
-                border-radius: 1.2rem !important;
+                background-color: #181818;
+                border-radius: 1.2rem;
                 box-shadow: 0 2px 24px rgba(0,0,0,0.18);
-                padding: 2.5rem 1.5rem !important;
+                padding: 2.5rem 1.5rem;
               }
-              /* CSS部分のinput/textarea/selectセレクタを強化 */
-              #sib-container input.input[type="text"],
-              #sib-container input.input[type="email"],
-              #sib-container input.input,
-              #sib-container .input input,
-              #sib-container textarea.input,
-              #sib-container select.input,
-              #sib-container input.input:where([type="text"],[type="email"],[type="search"],[type="password"]) {
-                background: #1a1a1a !important;
-                background-color: #1a1a1a !important;
-                color: #fff !important;
-                border: 1px solid #333 !important;
-                border-radius: 3px;
-                padding: 16px 20px !important;
-                font-size: 16px !important;
-                margin-bottom: 20px !important;
-                box-shadow: none !important;
-                transition: all 0.2s ease !important;
-                max-width: 100% !important;
-                font-family: 'Noto Sans JP', 'Noto Sans', 'Helvetica Neue', Arial, 'Meiryo', sans-serif !important;
+              #sib-container .entry__label {
+                color: #e0e0e0;
+                font-weight: 600;
+                margin-bottom: 0.7rem;
+                font-size: 1rem;
               }
-              #sib-container input.input:focus,
-              #sib-container textarea.input:focus,
-              #sib-container select.input:focus {
+              
+              /* focusスタイル */
+              #sib-container input[type="text"]:focus,
+              #sib-container input[type="email"]:focus,
+              #sib-container select:focus,
+              #sib-container textarea:focus {
                 border-color: #3b82f6 !important;
                 background-color: #0f0f0f !important;
                 outline: none !important;
                 box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
               }
-              #sib-container .entry__label {
-                color: #e0e0e0 !important;
-                font-weight: 600 !important;
-                margin-bottom: 0.7rem !important;
-                font-size: 1rem !important;
+              
+              /* より強い指定でfocusスタイルを強制適用 */
+              #sib-container .input:focus {
+                border-color: #3b82f6 !important;
+                background-color: #0f0f0f !important;
+                outline: none !important;
+                box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
               }
+              
               #sib-container .sib-form-block__button {
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-                border-radius: 0.75rem !important;
-                padding: 1rem 2.5rem !important;
-                font-weight: 700 !important;
-                font-size: 1.1rem !important;
-                color: #fff !important;
-                border: none !important;
-                margin-top: 1.5rem !important;
-                box-shadow: 0 2px 12px rgba(0,0,0,0.12) !important;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                border-radius: 0.75rem;
+                padding: 1rem 2.5rem;
+                font-weight: 700;
+                font-size: 1.1rem;
+                color: #fff;
+                border: none;
+                margin-top: 1.5rem;
+                box-shadow: 0 2px 12px rgba(0,0,0,0.12);
                 transition: background 0.2s;
               }
               #sib-container .sib-form-block__button:hover {
-                background: linear-gradient(135deg, #5a67d8 0%, #6b21a8 100%) !important;
+                background: linear-gradient(135deg, #5a67d8 0%, #6b21a8 100%);
               }
               #sib-container .entry__error {
-                border-radius: 0.5rem !important;
-                padding: 0.5rem 1rem !important;
-                margin-top: 0.5rem !important;
+                border-radius: 0.5rem;
+                padding: 0.5rem 1rem;
+                margin-top: 0.5rem;
               }
               #sib-container .checkbox {
-                border-color: #333 !important;
-                background-color: #222 !important;
+                border-color: #333;
+                background-color: #222;
               }
               #sib-container .checkbox_tick_positive {
-                background-color: #667eea !important;
-                border-color: #667eea !important;
+                background-color: #667eea;
+                border-color: #667eea;
               }
               
-              /* disabledのoptionタグのスタイル */
+              /* optionタグのスタイル */
               #sib-container select option[disabled] {
-                color: #c0ccda !important;
+                color: #9ca3af;
+              }
+              #sib-container select option {
+                color: #fff;
+                background-color: #1a1a1a;
               }
             </style>
             <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
@@ -170,169 +147,82 @@ const pageTitle = "Contact | お問い合わせ";
                     </span>
                   </div>
                 </div>
-<!--                <div id="sib-container" class="sib-container--large sib-container--vertical" style="text-align:center; background-color:rgba(24,24,24,1); max-width:540px; border-radius:3px; border-width:1px; border-color:#000000; border-style:solid; direction:ltr">
                   <form id="sib-form" method="POST" action="https://5cfbdc72.sibforms.com/serve/MUIFAHvjaQJaD1rBrlTrhLug9ZucuH7OKFC7kuoFzpVb2pMrtd8mxrLTxAVLSw5GvNzT_lwvOtJ4ZHC_bwwj-k8e-54x6lkFsrZA0jCyxxNKee0CS_21BMmy2yj1unrqEnNIQbhElxQa4kQ5NZUT9oOSAnHTD3rlsI72qAiNfFirUFD-mggegx5aGpWLz-hh9JSIIObrFzVXbToq" data-type="subscription">
-                    <div style="padding: 8px 0;">
-                      <div class="sib-form-block" style="font-size:32px; text-align:left; font-weight:700; font-family:Helvetica, sans-serif; color:#e0e0e0; background-color:transparent; text-align:left">
-                         
-                        <p>お問い合わせフォーム</p>
+                    
+                    <!-- メールアドレス -->
+                    <div class="form-field" style="margin-bottom: 24px;">
+                      <label class="entry__label" for="EMAIL" data-required="*">メールアドレス</label>
+                      <input class="input" type="text" id="EMAIL" name="EMAIL" autocomplete="off" placeholder="Email" data-required="true" required style="background-color: #1a1a1a; color: #fff; border: 2px solid #333; border-radius: 3px; padding: 16px 20px; font-size: 16px; font-family: 'Noto Sans JP', 'Noto Sans', 'Helvetica Neue', Arial, 'Meiryo', sans-serif; width: 100%; box-sizing: border-box; transition: all 0.2s ease;" onfocus="this.style.borderColor='#3b82f6'; this.style.backgroundColor='#0f0f0f'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)'" onblur="this.style.borderColor='#333'; this.style.backgroundColor='#1a1a1a'; this.style.boxShadow='none'" />
+                      <div class="field-help">正しいメールアドレスを記入してください</div>
+                      <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
+                    </div>
+
+                    <!-- 氏名（横並び） -->
+                    <div class="form-field-group" style="margin-bottom: 24px;">
+                      <div class="name-fields">
+                        <!-- 氏 -->
+                        <div class="name-field">
+                          <label class="entry__label" for="LASTNAME" data-required="*">氏</label>
+                          <input class="input" maxlength="200" type="text" id="LASTNAME" name="LASTNAME" autocomplete="off" placeholder="模擬" data-required="true" required style="background-color: #1a1a1a; color: #fff; border: 2px solid #333; border-radius: 3px; padding: 16px 20px; font-size: 16px; font-family: 'Noto Sans JP', 'Noto Sans', 'Helvetica Neue', Arial, 'Meiryo', sans-serif; width: 100%; box-sizing: border-box; transition: all 0.2s ease;" onfocus="this.style.borderColor='#3b82f6'; this.style.backgroundColor='#0f0f0f'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)'" onblur="this.style.borderColor='#333'; this.style.backgroundColor='#1a1a1a'; this.style.boxShadow='none'" />
+                          <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
+                        </div>
+                        <!-- 名 -->
+                        <div class="name-field">
+                          <label class="entry__label" for="FIRSTNAME" data-required="*">名</label>
+                          <input class="input" maxlength="200" type="text" id="FIRSTNAME" name="FIRSTNAME" autocomplete="off" placeholder="太郎" data-required="true" required style="background-color: #1a1a1a; color: #fff; border: 2px solid #333; border-radius: 3px; padding: 16px 20px; font-size: 16px; font-family: 'Noto Sans JP', 'Noto Sans', 'Helvetica Neue', Arial, 'Meiryo', sans-serif; width: 100%; box-sizing: border-box; transition: all 0.2s ease;" onfocus="this.style.borderColor='#3b82f6'; this.style.backgroundColor='#0f0f0f'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)'" onblur="this.style.borderColor='#333'; this.style.backgroundColor='#1a1a1a'; this.style.boxShadow='none'" />
+                          <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
+                        </div>
                       </div>
                     </div>
-                    <div style="padding: 8px 0;">
-                      <div class="sib-form-block" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#e0e0e0; background-color:transparent; text-align:left">
-                        <div class="sib-text-form-block">
-                          <p>以下のフォームに必要事項を記入の上、送信ボタンを押してください。</p>
-                          
-                        </div>
-                        
-                      </div>
-                    </div> -->
-                    <div style="padding: 8px 0;">
-                      <div class="sib-input sib-form-block">
-                        <div class="form__entry entry_block">
-                          <div class="form__label-row ">
-                            <label class="entry__label" style="font-weight: 700; text-align:left; font-size:16px; text-align:left; font-weight:700; font-family:Helvetica, sans-serif; color:#e0e0e0;" for="EMAIL" data-required="*">メールアドレス</label>
-            
-                            <div class="entry__field">
-                              <input class="input " type="text" id="EMAIL" name="EMAIL" autocomplete="off" placeholder="Email" data-required="true" required style="background: #1a1a1a !important; background-color: #1a1a1a !important; color: #fff !important; border: 1px solid #333 !important; border-radius: 3px; padding: 16px 20px !important; font-size: 16px !important; font-family: 'Noto Sans JP', 'Noto Sans', 'Helvetica Neue', Arial, 'Meiryo', sans-serif !important; width: 100% !important; box-sizing: border-box !important; transition: all 0.2s ease !important;" />
-                            </div>
-                          </div>
-            
-                          <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;">
+
+                    <!-- 所属 -->
+                    <div class="form-field" style="margin-bottom: 24px;">
+                      <label class="entry__label" for="JOB_TITLE" data-required="*">所属</label>
+                      <input class="input" maxlength="200" type="text" id="JOB_TITLE" name="JOB_TITLE" autocomplete="off" placeholder="模擬国連高校" data-required="true" required style="background-color: #1a1a1a; color: #fff; border: 2px solid #333; border-radius: 3px; padding: 16px 20px; font-size: 16px; font-family: 'Noto Sans JP', 'Noto Sans', 'Helvetica Neue', Arial, 'Meiryo', sans-serif; width: 100%; box-sizing: border-box; transition: all 0.2s ease;" onfocus="this.style.borderColor='#3b82f6'; this.style.backgroundColor='#0f0f0f'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)'" onblur="this.style.borderColor='#333'; this.style.backgroundColor='#1a1a1a'; this.style.boxShadow='none'" />
+                      <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
+                    </div>
+
+                    <!-- お問い合わせ内容 -->
+                    <div class="form-field" style="margin-bottom: 24px;">
+                      <label class="entry__label" for="INQUIRY_TYPE" data-required="*">お問い合わせ内容</label>
+                      <select class="input" id="INQUIRY_TYPE" name="INQUIRY_TYPE" data-required="true" style="background-color: #1a1a1a; border: 2px solid #333; border-radius: 3px; font-size: 16px; font-family: 'Noto Sans JP', 'Noto Sans', 'Helvetica Neue', Arial, 'Meiryo', sans-serif; width: 100%; box-sizing: border-box; transition: all 0.2s ease; padding: 0px 20px;" onfocus="this.style.borderColor='#3b82f6'; this.style.backgroundColor='#0f0f0f'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)'" onblur="this.style.borderColor='#333'; this.style.backgroundColor='#1a1a1a'; this.style.boxShadow='none'">
+                        <option value="" disabled selected hidden style="color: #9ca3af !important;">選択してください</option>
+                        <option value="1">内容に関するお問い合わせ</option>
+                        <option value="2">新記事・コンテンツのリクエスト</option>
+                        <option value="3">営業・取材</option>
+                        <option value="4">その他</option>
+                      </select>
+                      <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
+                    </div>
+
+                    <!-- 詳細内容 -->
+                    <div class="form-field" style="margin-bottom: 24px;">
+                      <textarea class="input" rows="4" maxlength="500" id="CONTENT" name="CONTENT" autocomplete="off" data-required="true" required style="background-color: #1a1a1a; color: #fff; border: 2px solid #333; border-radius: 3px; padding: 16px 20px; font-size: 16px; font-family: 'Noto Sans JP', 'Noto Sans', 'Helvetica Neue', Arial, 'Meiryo', sans-serif; width: 100%; box-sizing: border-box; transition: all 0.2s ease; min-height: 120px; resize: vertical;" onfocus="this.style.borderColor='#3b82f6'; this.style.backgroundColor='#0f0f0f'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)'" onblur="this.style.borderColor='#333'; this.style.backgroundColor='#1a1a1a'; this.style.boxShadow='none'"></textarea>
+                      <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
+                    </div>
+
+                    <!-- プライバシーポリシー同意 -->
+                    <div class="form-field text-center" style="margin-bottom: 32px;">
+                      <label class="checkbox-label">
+                        <input type="checkbox" value="1" id="OPT_IN" name="OPT_IN" required />
+                        <span>当サイトの<a href="/privacy-policy" target="_blank">プライバシー・ポリシー</a>に同意する</span>
                           </label>
-                          <label class="entry__specification" style="font-size:12px; text-align:left; font-family:Helvetica, sans-serif; color:#e0e0e0; text-align:left">
-                            正しいメールアドレスを記入してください
-                          </label>
-                        </div>
-                      </div>
+                      <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
                     </div>
-                  <!-- 氏名 横並び -->
-                  <div class="flex flex-col md:flex-row gap-2 mb-4" style="padding: 0 16px;">
-                    <!-- 氏 -->
-                    <div class="flex-1 min-w-0">
-                      <div class="form__entry entry_block">
-                        <div class="form__label-row ">
-                          <label class="entry__label" style="font-weight: 700; text-align:left; font-size:16px; font-family:Helvetica, sans-serif; color:#e0e0e0;" for="LASTNAME" data-required="*">氏</label>
-                          <div class="entry__field">
-                            <input class="input " maxlength="200" type="text" id="LASTNAME" name="LASTNAME" autocomplete="off" placeholder="模擬" data-required="true" required style="background: #1a1a1a !important; background-color: #1a1a1a !important; color: #fff !important; border: 1px solid #333 !important; border-radius: 3px !important; padding: 16px 20px !important; font-size: 16px !important; font-family: 'Noto Sans JP', 'Noto Sans', 'Helvetica Neue', Arial, 'Meiryo', sans-serif !important; width: 100% !important; box-sizing: border-box !important; transition: all 0.2s ease !important;" />
-                          </div>
-                        </div>
-                        <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
-                      </div>
-                    </div>
-                    <!-- 名 -->
-                    <div class="flex-1 min-w-0">
-                      <div class="form__entry entry_block">
-                        <div class="form__label-row ">
-                          <label class="entry__label" style="font-weight: 700; text-align:left; font-size:16px; font-family:Helvetica, sans-serif; color:#e0e0e0;" for="FIRSTNAME" data-required="*">名</label>
-                          <div class="entry__field">
-                            <input class="input " maxlength="200" type="text" id="FIRSTNAME" name="FIRSTNAME" autocomplete="off" placeholder="太郎" data-required="true" required style="background: #1a1a1a !important; background-color: #1a1a1a !important; color: #fff !important; border: 1px solid #333 !important; border-radius: 3px !important; padding: 16px 20px !important; font-size: 16px !important; font-family: 'Noto Sans JP', 'Noto Sans', 'Helvetica Neue', Arial, 'Meiryo', sans-serif !important; width: 100% !important; box-sizing: border-box !important; transition: all 0.2s ease !important;" />
-                          </div>
-                        </div>
-                        <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
-                      </div>
-                    </div>
-                  </div>
-                    <div style="padding: 8px 0;">
-                      <div class="sib-input sib-form-block">
-                        <div class="form__entry entry_block">
-                          <div class="form__label-row ">
-                            <label class="entry__label" style="font-weight: 700; text-align:left; font-size:16px; text-align:left; font-weight:700; font-family:Helvetica, sans-serif; color:#e0e0e0;" for="JOB_TITLE" data-required="*">所属</label>
-            
-                            <div class="entry__field">
-                              <input class="input " maxlength="200" type="text" id="JOB_TITLE" name="JOB_TITLE" autocomplete="off" placeholder="模擬国連高校" data-required="true" required style="background: #1a1a1a !important; background-color: #1a1a1a !important; color: #fff !important; border: 1px solid #333 !important; border-radius: 3px !important; padding: 16px 20px !important; font-size: 16px !important; font-family: 'Noto Sans JP', 'Noto Sans', 'Helvetica Neue', Arial, 'Meiryo', sans-serif !important; width: 100% !important; box-sizing: border-box !important; transition: all 0.2s ease !important;" />
-                            </div>
-                          </div>
-            
-                          <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;">
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-                    <div style="padding: 8px 0;">
-                      <div class="sib-select sib-form-block" data-required="true">
-                        <div class="form__entry entry_block">
-                          <div class="form__label-row ">
-                            <label class="entry__label" style="font-weight: 700; text-align:left; font-size:16px; text-align:left; font-weight:700; font-family:Helvetica, sans-serif; color:#e0e0e0;" data-required="*">お問い合わせ内容</label>
-                            <div class="entry__field">
-                              <select class="input" id="INQUIRY_TYPE" name="INQUIRY_TYPE" data-required="true" style="background: #1a1a1a !important; background-color: #1a1a1a !important; border: 1px solid #333 !important; border-radius: 3px; font-size: 16px !important; font-family: 'Noto Sans JP', 'Noto Sans', 'Helvetica Neue', Arial, 'Meiryo', sans-serif !important; width: 100% !important; box-sizing: border-box !important; transition: all 0.2s ease !important;">
-                                <option value="" disabled selected hidden>選択してください</option>
-            
-                                <option class="sib-menu__item" value="1">
-                                  内容に関するお問い合わせ
-                                </option>
-                                <option class="sib-menu__item" value="2">
-                                  新記事・コンテンツのリクエスト
-                                </option>
-                                <option class="sib-menu__item" value="3">
-                                  営業・取材
-                                </option>
-                                <option class="sib-menu__item" value="4">
-                                  その他
-                                </option>
-                              </select>
-                            </div>
-                          </div>
-                          <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;">
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-                    <div style="padding: 8px 0;">
-                      <div class="sib-input sib-form-block">
-                        <div class="form__entry entry_block">
-                          <div class="form__label-row ">
-            
-                            <div class="entry__field">
-                              <textarea rows="2" class="input " maxlength="500" id="CONTENT" name="CONTENT" autocomplete="off" data-required="true" required style="background: #1a1a1a !important; background-color: #1a1a1a !important; color: #fff !important; border: 1px solid #333 !important; border-radius: 3px; padding: 16px 20px !important; font-size: 16px !important; font-family: 'Noto Sans JP', 'Noto Sans', 'Helvetica Neue', Arial, 'Meiryo', sans-serif !important; width: 100% !important; box-sizing: border-box !important; transition: all 0.2s ease !important; min-height: 120px !important; resize: vertical !important;"></textarea>
-                            </div>
-                          </div>
-            
-                          <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;">
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-                    <div style="padding: 8px 0;">
-                      <div class="sib-optin sib-form-block" data-required="true">
-                        <div class="form__entry entry_mcq">
-                          <div class="form__label-row ">
-                            <div class="entry__choice" style="">
-                              <label>
-                                <input type="checkbox" class="input_replaced" value="1" id="OPT_IN" name="OPT_IN" required />
-                                <span class="checkbox checkbox_tick_positive" style="margin-left: 0px;"></span>
-                                <span style="font-size:14px; text-align:left; font-family:Helvetica, sans-serif; color:#e0e0e0; background-color:transparent;">
-                                  <p>当サイトの<a href="/privacy-policy" target="_blank">プライバシー・ポリシー</a>に同意する</p>
-                                  <span data-required="*" style="display: inline;" class="entry__label entry__label_optin"></span>
-                                </span>
-                              </label>
-                            </div>
-                          </div>
-                          <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;">
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-                    <div style="padding: 8px 0;">
-                      <div class="g-recaptcha-v3" data-sitekey="6Ld3VpUrAAAAADwgcnAxTo9syC02nsywR_8IaTgh" style="display: none"></div>
-                    </div>
-                    <div style="padding: 8px 0;">
-                      <div class="sib-form-block" style="text-align: center">
-                        <button class="sib-form-block__button sib-form-block__button-with-loader" style="font-size:16px; text-align:center; font-weight:700; font-family:Helvetica, sans-serif; color:#FFFFFF; background-color:#181818; border-radius:3px; border-width:0px;" form="sib-form" type="submit">
-                          <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512" style="">
-                            <path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z" />
-                          </svg>
+
+                    <!-- reCAPTCHA -->
+                    <div class="g-recaptcha-v3" data-sitekey="6Ld3VpUrAAAAADwgcnAxTo9syC02nsywR_8IaTgh" style="display: none"></div>
+
+                    <!-- 送信ボタン -->
+                    <div class="form-field text-center" style="margin-bottom: 16px;">
+                      <button class="sib-form-block__button" form="sib-form" type="submit" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; border-radius: 0.75rem; padding: 1rem 2.5rem; font-weight: 700; font-size: 1.1rem; border: none; margin-top: 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.12); transition: background 0.2s; font-family: 'Noto Sans JP', 'Noto Sans', 'Helvetica Neue', Arial, 'Meiryo', sans-serif;">
                           送信 / Submit
                         </button>
-                      </div>
                     </div>
             
                     <input type="text" name="email_address_check" value="" class="input--hidden">
                     <input type="hidden" name="locale" value="en">
                   </form>
-                </div>
-              </div>
-            </div>
             
             <script>
               // @ts-ignore

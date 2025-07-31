@@ -88,6 +88,44 @@ const pageTitle = "Contact | お問い合わせ";
                 text-decoration: underline;
                 color: #60a5fa;
               }
+
+              /* 入力フィールドの背景色を黒くする */
+              #sib-container input.input {
+                background-color: #1a1a1a !important;
+                color: #ffffff !important;
+                border: 1px solid #333333 !important;
+              }
+
+              #sib-container textarea.input {
+                background-color: #1a1a1a !important;
+                color: #ffffff !important;
+                border: 1px solid #333333 !important;
+              }
+
+              #sib-container select.input {
+                background-color: #1a1a1a !important;
+                color: #ffffff !important;
+                border: 1px solid #333333 !important;
+              }
+
+              /* フォーカス時のスタイル */
+              #sib-container input.input:focus {
+                background-color: #2a2a2a !important;
+                border-color: #60a5fa !important;
+                outline: none !important;
+              }
+
+              #sib-container textarea.input:focus {
+                background-color: #2a2a2a !important;
+                border-color: #60a5fa !important;
+                outline: none !important;
+              }
+
+              #sib-container select.input:focus {
+                background-color: #2a2a2a !important;
+                border-color: #60a5fa !important;
+                outline: none !important;
+              }
             </style>
             <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
             
@@ -116,7 +154,7 @@ const pageTitle = "Contact | お問い合わせ";
                 </div>
                 <div></div>
                 <div id="sib-container" class="sib-container--large sib-container--vertical" style="text-align:center; background-color:rgba(24,24,24,1); max-width:540px; border-radius:3px; border-width:1px; border-color:#000000; border-style:solid; direction:ltr">
-                  <form id="sib-form" method="POST" action="https://5cfbdc72.sibforms.com/serve/MUIFAPr9evjyNwQ4rK_CYHrLPD4Ifb5_zd22u6UC4oC8N7l1XRGZ19e00Nh9V39-bThJzNWsaagRiiuS7stmBuk_tfvOhHoYxVnOJfA1m6FrrdNWafFBWJx2O6lzIvjN0-trpRHWYgBPh6YlGy_gLNKqmDjXwfv0hjm6pW8UZbLFsYc20u0Oa4J4MBYGOmhcwdxmG6Za_yRh7pAv" data-type="subscription">
+                  <form id="sib-form" method="POST" action="https://5cfbdc72.sibforms.com/serve/MUIFAHvjaQJaD1rBrlTrhLug9ZucuH7OKFC7kuoFzpVb2pMrtd8mxrLTxAVLSw5GvNzT_lwvOtJ4ZHC_bwwj-k8e-54x6lkFsrZA0jCyxxNKee0CS_21BMmy2yj1unrqEnNIQbhElxQa4kQ5NZUT9oOSAnHTD3rlsI72qAiNfFirUFD-mggegx5aGpWLz-hh9JSIIObrFzVXbToq" data-type="subscription">
                     <div style="padding: 8px 0;">
                       <div class="sib-form-block" style="font-size:32px; text-align:left; font-weight:700; font-family:Helvetica, sans-serif; color:#e0e0e0; background-color:transparent; text-align:left">
                         <p>お問い合わせフォーム</p>
@@ -226,6 +264,21 @@ const pageTitle = "Contact | お問い合わせ";
                               </select>
                             </div>
                           </div>
+                          <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;">
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="padding: 8px 0;">
+                      <div class="sib-input sib-form-block">
+                        <div class="form__entry entry_block">
+                          <div class="form__label-row ">
+            
+                            <div class="entry__field">
+                              <textarea rows="2" class="input " maxlength="500" id="CONTENT" name="CONTENT" autocomplete="off" data-required="true" required></textarea>
+                            </div>
+                          </div>
+            
                           <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;">
                           </label>
                         </div>

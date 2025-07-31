@@ -64,91 +64,71 @@ const pageTitle = "Contact | お問い合わせ";
                 src: url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/3ef7cf158f310cf752d5ad08cd0e7e60.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/ece3a1d82f18b60bcce0211725c476aa.woff) format("woff")
               }
 
-              /* 全フォーム要素にNoto Sans JPを強制 */
+              /* Tally.so風ダークフォームスタイル */
               #sib-container, #sib-container * {
                 font-family: 'Noto Sans JP', 'Noto Sans', 'Helvetica Neue', Arial, 'Meiryo', sans-serif !important;
-                -webkit-font-smoothing: antialiased;
-                font-weight: 400;
+                color: #e0e0e0 !important;
+                background: none;
               }
-
-              #sib-container input:-ms-input-placeholder,
-              #sib-container input::placeholder,
-              #sib-container textarea::placeholder {
-                color: #9ca3af;
-                font-family: 'Noto Sans JP', 'Noto Sans', 'Helvetica Neue', Arial, 'Meiryo', sans-serif !important;
+              #sib-container {
+                background: #181818 !important;
+                border-radius: 1.2rem !important;
+                box-shadow: 0 2px 24px rgba(0,0,0,0.18);
+                padding: 2.5rem 1.5rem !important;
               }
-
-              #sib-container a {
-                text-decoration: underline;
-                color: #60a5fa;
-              }
-
-              /* 入力フィールドのスタイル改善 */
               #sib-container input.input,
               #sib-container textarea.input,
               #sib-container select.input {
-                background-color: rgba(26, 26, 26, 0.8) !important;
-                color: #e5e7eb !important;
-                border: 1.5px solid rgba(255, 255, 255, 0.15) !important;
-                border-radius: 0.5rem !important;
-                padding: 0.75rem 1rem !important;
-                font-size: 1rem !important;
+                background-color: #222 !important;
+                color: #fff !important;
+                border: 1.5px solid #333 !important;
+                border-radius: 0.75rem !important;
+                padding: 1rem 1.2rem !important;
+                font-size: 1.1rem !important;
+                margin-bottom: 1.2rem !important;
+                box-shadow: none !important;
                 transition: border-color 0.2s !important;
-                backdrop-filter: blur(10px) !important;
               }
-              #sib-container textarea.input {
-                min-height: 100px !important;
-                resize: vertical !important;
-              }
-
-              /* フォーカス時のスタイルをシンプルに */
               #sib-container input.input:focus,
               #sib-container textarea.input:focus,
               #sib-container select.input:focus {
                 border-color: #60a5fa !important;
-                background-color: rgba(26, 26, 26, 0.95) !important;
+                background-color: #181818 !important;
                 outline: none !important;
-                box-shadow: none !important;
               }
-
-              /* ラベルのスタイル改善 */
               #sib-container .entry__label {
-                color: #e5e7eb !important;
+                color: #e0e0e0 !important;
                 font-weight: 600 !important;
-                margin-bottom: 0.5rem !important;
+                margin-bottom: 0.7rem !important;
+                font-size: 1rem !important;
               }
-
-              /* 送信ボタンのスタイル改善 */
               #sib-container .sib-form-block__button {
                 background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-                border-radius: 0.5rem !important;
-                padding: 0.75rem 2rem !important;
-                font-weight: 600 !important;
-                transition: all 0.2s ease !important;
+                border-radius: 0.75rem !important;
+                padding: 1rem 2.5rem !important;
+                font-weight: 700 !important;
+                font-size: 1.1rem !important;
+                color: #fff !important;
                 border: none !important;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
-                font-family: 'Noto Sans JP', 'Noto Sans', 'Helvetica Neue', Arial, 'Meiryo', sans-serif !important;
+                margin-top: 1.5rem !important;
+                box-shadow: 0 2px 12px rgba(0,0,0,0.12) !important;
+                transition: background 0.2s;
               }
               #sib-container .sib-form-block__button:hover {
-                transform: translateY(-2px) !important;
-                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15) !important;
+                background: linear-gradient(135deg, #5a67d8 0%, #6b21a8 100%) !important;
               }
-
-              /* エラーメッセージのスタイル改善 */
               #sib-container .entry__error {
                 border-radius: 0.5rem !important;
                 padding: 0.5rem 1rem !important;
                 margin-top: 0.5rem !important;
               }
-
-              /* チェックボックスのスタイル改善 */
               #sib-container .checkbox {
-                border-color: rgba(255, 255, 255, 0.2) !important;
-                background-color: rgba(26, 26, 26, 0.8) !important;
+                border-color: #333 !important;
+                background-color: #222 !important;
               }
               #sib-container .checkbox_tick_positive {
-                background-color: #3b82f6 !important;
-                border-color: #3b82f6 !important;
+                background-color: #667eea !important;
+                border-color: #667eea !important;
               }
             </style>
             <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">

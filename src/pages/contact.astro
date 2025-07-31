@@ -76,7 +76,9 @@ const pageTitle = "Contact | お問い合わせ";
                 box-shadow: 0 2px 24px rgba(0,0,0,0.18);
                 padding: 2.5rem 1.5rem !important;
               }
+              /* CSS部分のinput/textarea/selectセレクタを強化 */
               #sib-container input.input,
+              #sib-container .input input,
               #sib-container textarea.input,
               #sib-container select.input {
                 background-color: #222 !important;
@@ -88,6 +90,7 @@ const pageTitle = "Contact | お問い合わせ";
                 margin-bottom: 1.2rem !important;
                 box-shadow: none !important;
                 transition: border-color 0.2s !important;
+                max-width: 100% !important;
               }
               #sib-container input.input:focus,
               #sib-container textarea.input:focus,
@@ -196,9 +199,9 @@ const pageTitle = "Contact | お問い合わせ";
                       </div>
                     </div>
                   <!-- 氏名 横並び -->
-                  <div class="flex flex-col md:flex-row gap-4 mb-4">
+                  <div class="flex flex-col md:flex-row gap-2 mb-4">
                     <!-- 氏 -->
-                    <div class="flex-1">
+                    <div class="flex-1 min-w-0">
                       <div class="form__entry entry_block">
                         <div class="form__label-row ">
                           <label class="entry__label" style="font-weight: 700; text-align:left; font-size:16px; font-family:Helvetica, sans-serif; color:#e0e0e0;" for="LASTNAME" data-required="*">氏</label>
@@ -210,7 +213,7 @@ const pageTitle = "Contact | お問い合わせ";
                       </div>
                     </div>
                     <!-- 名 -->
-                    <div class="flex-1">
+                    <div class="flex-1 min-w-0">
                       <div class="form__entry entry_block">
                         <div class="form__label-row ">
                           <label class="entry__label" style="font-weight: 700; text-align:left; font-size:16px; font-family:Helvetica, sans-serif; color:#e0e0e0;" for="FIRSTNAME" data-required="*">名</label>

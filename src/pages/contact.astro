@@ -84,24 +84,26 @@ const pageTitle = "Contact | お問い合わせ";
               #sib-container textarea.input,
               #sib-container select.input,
               #sib-container input.input:where([type="text"],[type="email"],[type="search"],[type="password"]) {
-                background: #222 !important;
-                background-color: #222 !important;
+                background: #1a1a1a !important;
+                background-color: #1a1a1a !important;
                 color: #fff !important;
-                border: 1.5px solid #333 !important;
-                border-radius: 0.75rem !important;
-                padding: 1rem 1.2rem !important;
-                font-size: 1.1rem !important;
-                margin-bottom: 1.2rem !important;
+                border: 1px solid #333 !important;
+                border-radius: 12px !important;
+                padding: 16px 20px !important;
+                font-size: 16px !important;
+                margin-bottom: 20px !important;
                 box-shadow: none !important;
-                transition: border-color 0.2s !important;
+                transition: all 0.2s ease !important;
                 max-width: 100% !important;
+                font-family: 'Noto Sans JP', 'Noto Sans', 'Helvetica Neue', Arial, 'Meiryo', sans-serif !important;
               }
               #sib-container input.input:focus,
               #sib-container textarea.input:focus,
               #sib-container select.input:focus {
-                border-color: #60a5fa !important;
-                background-color: #181818 !important;
+                border-color: #3b82f6 !important;
+                background-color: #0f0f0f !important;
                 outline: none !important;
+                box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
               }
               #sib-container .entry__label {
                 color: #e0e0e0 !important;
@@ -163,10 +165,8 @@ const pageTitle = "Contact | お問い合わせ";
                     </span>
                   </div>
                 </div>
-                <div></div>
-                <div id="sib-container" class="sib-container--large sib-container--vertical" style="text-align:center; background-color:rgba(24,24,24,1); max-width:540px; border-radius:3px; border-width:1px; border-color:#000000; border-style:solid; direction:ltr">
+<!--                <div id="sib-container" class="sib-container--large sib-container--vertical" style="text-align:center; background-color:rgba(24,24,24,1); max-width:540px; border-radius:3px; border-width:1px; border-color:#000000; border-style:solid; direction:ltr">
                   <form id="sib-form" method="POST" action="https://5cfbdc72.sibforms.com/serve/MUIFAHvjaQJaD1rBrlTrhLug9ZucuH7OKFC7kuoFzpVb2pMrtd8mxrLTxAVLSw5GvNzT_lwvOtJ4ZHC_bwwj-k8e-54x6lkFsrZA0jCyxxNKee0CS_21BMmy2yj1unrqEnNIQbhElxQa4kQ5NZUT9oOSAnHTD3rlsI72qAiNfFirUFD-mggegx5aGpWLz-hh9JSIIObrFzVXbToq" data-type="subscription">
-                    <!--
                     <div style="padding: 8px 0;">
                       <div class="sib-form-block" style="font-size:32px; text-align:left; font-weight:700; font-family:Helvetica, sans-serif; color:#e0e0e0; background-color:transparent; text-align:left">
                          
@@ -181,8 +181,7 @@ const pageTitle = "Contact | お問い合わせ";
                         </div>
                         
                       </div>
-                      -->
-                    </div>
+                    </div> -->
                     <div style="padding: 8px 0;">
                       <div class="sib-input sib-form-block">
                         <div class="form__entry entry_block">
@@ -203,7 +202,7 @@ const pageTitle = "Contact | お問い合わせ";
                       </div>
                     </div>
                   <!-- 氏名 横並び -->
-                  <div class="flex flex-col md:flex-row gap-2 mb-4">
+                  <div class="flex flex-col md:flex-row gap-2 mb-4" style="padding: 0 16px;">
                     <!-- 氏 -->
                     <div class="flex-1 min-w-0">
                       <div class="form__entry entry_block">

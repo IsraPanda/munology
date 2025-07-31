@@ -147,7 +147,7 @@ const pageTitle = "Contact | お問い合わせ";
                     </span>
                   </div>
                 </div>
-                  <form id="sib-form" method="POST" action="https://5cfbdc72.sibforms.com/serve/MUIFAHvjaQJaD1rBrlTrhLug9ZucuH7OKFC7kuoFzpVb2pMrtd8mxrLTxAVLSw5GvNzT_lwvOtJ4ZHC_bwwj-k8e-54x6lkFsrZA0jCyxxNKee0CS_21BMmy2yj1unrqEnNIQbhElxQa4kQ5NZUT9oOSAnHTD3rlsI72qAiNfFirUFD-mggegx5aGpWLz-hh9JSIIObrFzVXbToq" data-type="subscription" onsubmit="setTimeout(function(){ window.location.href='/thanks'; }, 1000);">
+                  <form id="sib-form" method="POST" action="https://5cfbdc72.sibforms.com/serve/MUIFAHvjaQJaD1rBrlTrhLug9ZucuH7OKFC7kuoFzpVb2pMrtd8mxrLTxAVLSw5GvNzT_lwvOtJ4ZHC_bwwj-k8e-54x6lkFsrZA0jCyxxNKee0CS_21BMmy2yj1unrqEnNIQbhElxQa4kQ5NZUT9oOSAnHTD3rlsI72qAiNfFirUFD-mggegx5aGpWLz-hh9JSIIObrFzVXbToq" data-type="subscription" onsubmit="return validateForm(event);">
                     
                     <!-- メールアドレス -->
                     <div class="form-field" style="margin-bottom: 24px;">
@@ -249,6 +249,89 @@ const pageTitle = "Contact | お問い合わせ";
               };
             
               var AUTOHIDE = Boolean(0);
+
+              // フォームバリデーション関数
+              function validateForm(event) {
+                event.preventDefault();
+                
+                const email = document.getElementById('EMAIL') as HTMLInputElement;
+                const lastName = document.getElementById('LASTNAME') as HTMLInputElement;
+                const firstName = document.getElementById('FIRSTNAME') as HTMLInputElement;
+                const jobTitle = document.getElementById('JOB_TITLE') as HTMLInputElement;
+                const inquiryType = document.getElementById('INQUIRY_TYPE') as HTMLSelectElement;
+                const content = document.getElementById('CONTENT') as HTMLTextAreaElement;
+                const optIn = document.getElementById('OPT_IN') as HTMLInputElement;
+                
+                let isValid = true;
+                
+                // メールアドレスのバリデーション
+                if (!email || !email.value.trim()) {
+                  alert('メールアドレスを入力してください。');
+                  email?.focus();
+                  return false;
+                }
+                
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email.value.trim())) {
+                  alert('正しいメールアドレスを入力してください。');
+                  email?.focus();
+                  return false;
+                }
+                
+                // 氏名のバリデーション
+                if (!lastName || !lastName.value.trim()) {
+                  alert('氏を入力してください。');
+                  lastName?.focus();
+                  return false;
+                }
+                
+                if (!firstName || !firstName.value.trim()) {
+                  alert('名を入力してください。');
+                  firstName?.focus();
+                  return false;
+                }
+                
+                // 所属のバリデーション
+                if (!jobTitle || !jobTitle.value.trim()) {
+                  alert('所属を入力してください。');
+                  jobTitle?.focus();
+                  return false;
+                }
+                
+                // お問い合わせ内容のバリデーション
+                if (!inquiryType || !inquiryType.value) {
+                  alert('お問い合わせ内容を選択してください。');
+                  inquiryType?.focus();
+                  return false;
+                }
+                
+                // 詳細内容のバリデーション
+                if (!content || !content.value.trim()) {
+                  alert('詳細内容を入力してください。');
+                  content?.focus();
+                  return false;
+                }
+                
+                // プライバシーポリシー同意のバリデーション
+                if (!optIn || !optIn.checked) {
+                  alert('プライバシー・ポリシーに同意してください。');
+                  optIn?.focus();
+                  return false;
+                }
+                
+                // すべてのバリデーションが通った場合、フォームを送信
+                if (isValid) {
+                  // 1秒後にthanksページにリダイレクト
+                  setTimeout(function(){ 
+                    window.location.href='/thanks'; 
+                  }, 1000);
+                  
+                  // フォームを送信
+                  return true;
+                }
+                
+                return false;
+              }
             </script>
             
             <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>

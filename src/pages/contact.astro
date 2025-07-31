@@ -195,38 +195,33 @@ const pageTitle = "Contact | お問い合わせ";
                         </div>
                       </div>
                     </div>
-                    <div style="padding: 8px 0;">
-                      <div class="sib-input sib-form-block">
-                        <div class="form__entry entry_block">
-                          <div class="form__label-row ">
-                            <label class="entry__label" style="font-weight: 700; text-align:left; font-size:16px; text-align:left; font-weight:700; font-family:Helvetica, sans-serif; color:#e0e0e0;" for="LASTNAME" data-required="*">氏</label>
-            
-                            <div class="entry__field">
-                              <input class="input " maxlength="200" type="text" id="LASTNAME" name="LASTNAME" autocomplete="off" placeholder="模擬" data-required="true" required />
-                            </div>
+                  <!-- 氏名 横並び -->
+                  <div class="flex flex-col md:flex-row gap-4 mb-4">
+                    <!-- 氏 -->
+                    <div class="flex-1">
+                      <div class="form__entry entry_block">
+                        <div class="form__label-row ">
+                          <label class="entry__label" style="font-weight: 700; text-align:left; font-size:16px; font-family:Helvetica, sans-serif; color:#e0e0e0;" for="LASTNAME" data-required="*">氏</label>
+                          <div class="entry__field">
+                            <input class="input " maxlength="200" type="text" id="LASTNAME" name="LASTNAME" autocomplete="off" placeholder="模擬" data-required="true" required />
                           </div>
-            
-                          <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;">
-                          </label>
                         </div>
+                        <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
                       </div>
                     </div>
-                    <div style="padding: 8px 0;">
-                      <div class="sib-input sib-form-block">
-                        <div class="form__entry entry_block">
-                          <div class="form__label-row ">
-                            <label class="entry__label" style="font-weight: 700; text-align:left; font-size:16px; text-align:left; font-weight:700; font-family:Helvetica, sans-serif; color:#e0e0e0;" for="FIRSTNAME" data-required="*">名</label>
-            
-                            <div class="entry__field">
-                              <input class="input " maxlength="200" type="text" id="FIRSTNAME" name="FIRSTNAME" autocomplete="off" placeholder="太郎" data-required="true" required />
-                            </div>
+                    <!-- 名 -->
+                    <div class="flex-1">
+                      <div class="form__entry entry_block">
+                        <div class="form__label-row ">
+                          <label class="entry__label" style="font-weight: 700; text-align:left; font-size:16px; font-family:Helvetica, sans-serif; color:#e0e0e0;" for="FIRSTNAME" data-required="*">名</label>
+                          <div class="entry__field">
+                            <input class="input " maxlength="200" type="text" id="FIRSTNAME" name="FIRSTNAME" autocomplete="off" placeholder="太郎" data-required="true" required />
                           </div>
-            
-                          <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;">
-                          </label>
                         </div>
+                        <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
                       </div>
                     </div>
+                  </div>
                     <div style="padding: 8px 0;">
                       <div class="sib-input sib-form-block">
                         <div class="form__entry entry_block">

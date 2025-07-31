@@ -250,9 +250,46 @@ const pageTitle = "Contact | お問い合わせ";
             
               var AUTOHIDE = Boolean(0);
 
+              // エラー表示をクリアする関数
+              function clearErrors() {
+                const errorLabels = document.querySelectorAll('.entry__error');
+                errorLabels.forEach(label => {
+                  (label as HTMLElement).textContent = '';
+                  (label as HTMLElement).style.display = 'none';
+                });
+                
+                // 入力フィールドのエラー表示をクリア
+                const inputs = document.querySelectorAll('.input');
+                inputs.forEach(input => {
+                  (input as HTMLElement).style.borderColor = '#333';
+                  (input as HTMLElement).style.backgroundColor = '#1a1a1a';
+                  (input as HTMLElement).style.boxShadow = 'none';
+                });
+              }
+              
+              // エラー表示を設定する関数
+              function showError(element: HTMLElement, message: string) {
+                // エラーラベルを表示
+                const errorLabel = element.parentElement?.querySelector('.entry__error') as HTMLElement;
+                if (errorLabel) {
+                  errorLabel.textContent = message;
+                  errorLabel.style.display = 'block';
+                }
+                
+                // 入力フィールドをエラー表示
+                if (element instanceof HTMLInputElement || element instanceof HTMLSelectElement || element instanceof HTMLTextAreaElement) {
+                  element.style.borderColor = '#ef4444';
+                  element.style.backgroundColor = '#1a1a1a';
+                  element.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, 0.1)';
+                }
+              }
+              
               // フォームバリデーション関数
               function validateForm(event) {
                 event.preventDefault();
+                
+                // エラー表示をクリア
+                clearErrors();
                 
                 const email = document.getElementById('EMAIL') as HTMLInputElement;
                 const lastName = document.getElementById('LASTNAME') as HTMLInputElement;
@@ -266,57 +303,57 @@ const pageTitle = "Contact | お問い合わせ";
                 
                 // メールアドレスのバリデーション
                 if (!email || !email.value.trim()) {
-                  alert('メールアドレスを入力してください。');
+                  showError(email, 'メールアドレスを入力してください。');
                   email?.focus();
-                  return false;
-                }
-                
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(email.value.trim())) {
-                  alert('正しいメールアドレスを入力してください。');
-                  email?.focus();
-                  return false;
+                  isValid = false;
+                } else {
+                  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                  if (!emailRegex.test(email.value.trim())) {
+                    showError(email, '正しいメールアドレスを入力してください。');
+                    email?.focus();
+                    isValid = false;
+                  }
                 }
                 
                 // 氏名のバリデーション
                 if (!lastName || !lastName.value.trim()) {
-                  alert('氏を入力してください。');
+                  showError(lastName, '氏を入力してください。');
                   lastName?.focus();
-                  return false;
+                  isValid = false;
                 }
                 
                 if (!firstName || !firstName.value.trim()) {
-                  alert('名を入力してください。');
+                  showError(firstName, '名を入力してください。');
                   firstName?.focus();
-                  return false;
+                  isValid = false;
                 }
                 
                 // 所属のバリデーション
                 if (!jobTitle || !jobTitle.value.trim()) {
-                  alert('所属を入力してください。');
+                  showError(jobTitle, '所属を入力してください。');
                   jobTitle?.focus();
-                  return false;
+                  isValid = false;
                 }
                 
                 // お問い合わせ内容のバリデーション
                 if (!inquiryType || !inquiryType.value) {
-                  alert('お問い合わせ内容を選択してください。');
+                  showError(inquiryType, 'お問い合わせ内容を選択してください。');
                   inquiryType?.focus();
-                  return false;
+                  isValid = false;
                 }
                 
                 // 詳細内容のバリデーション
                 if (!content || !content.value.trim()) {
-                  alert('詳細内容を入力してください。');
+                  showError(content, '詳細内容を入力してください。');
                   content?.focus();
-                  return false;
+                  isValid = false;
                 }
                 
                 // プライバシーポリシー同意のバリデーション
                 if (!optIn || !optIn.checked) {
-                  alert('プライバシー・ポリシーに同意してください。');
+                  showError(optIn, 'プライバシー・ポリシーに同意してください。');
                   optIn?.focus();
-                  return false;
+                  isValid = false;
                 }
                 
                 // すべてのバリデーションが通った場合、フォームを送信

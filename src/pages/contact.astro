@@ -77,10 +77,14 @@ const pageTitle = "Contact | お問い合わせ";
                 padding: 2.5rem 1.5rem !important;
               }
               /* CSS部分のinput/textarea/selectセレクタを強化 */
+              #sib-container input.input[type="text"],
+              #sib-container input.input[type="email"],
               #sib-container input.input,
               #sib-container .input input,
               #sib-container textarea.input,
-              #sib-container select.input {
+              #sib-container select.input,
+              #sib-container input.input:where([type="text"],[type="email"],[type="search"],[type="password"]) {
+                background: #222 !important;
                 background-color: #222 !important;
                 color: #fff !important;
                 border: 1.5px solid #333 !important;

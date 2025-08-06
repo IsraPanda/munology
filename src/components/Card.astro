@@ -1,0 +1,44 @@
+---
+export interface Props {
+  href?: string;
+  class?: string;
+  ariaLabel?: string;
+  ariaDescribedBy?: string;
+  variant?: 'info' | 'success' | 'warning' | 'default';
+}
+
+const { href, class: className = '', ariaLabel, ariaDescribedBy, variant = 'default' } = Astro.props;
+
+const baseClasses = "card-bg rounded-xl overflow-hidden transform transition-all duration-500 shadow-lg border border-gray-700";
+const variantHover = {
+  info: 'hover:border-blue-500',
+  success: 'hover:border-green-500',
+  warning: 'hover:border-yellow-500',
+  default: 'hover:border-gray-500',
+};
+const classes = `${baseClasses} ${variantHover[variant]} ${className}`;
+---
+
+{href ? (
+  <a 
+    href={href} 
+    class={`${classes} block hover:-translate-y-1`}
+    aria-label={ariaLabel}
+    aria-describedby={ariaDescribedBy}
+  >
+    <div class="p-6">
+      <slot />
+    </div>
+  </a>
+) : (
+  <div 
+    class={classes}
+    role="article"
+    aria-label={ariaLabel}
+    aria-describedby={ariaDescribedBy}
+  >
+    <div class="p-6">
+      <slot />
+    </div>
+  </div>
+)} 

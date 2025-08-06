@@ -1,379 +1,378 @@
 ---
 // src/pages/contact.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import FormField from '../components/FormField.astro';
+import Button from '../components/Button.astro';
+import Icon from '../components/Icon.astro';
+import Message from '../components/Message.astro';
+import Stack from '../components/Stack.astro';
 
 const pageTitle = "Contact | お問い合わせ";
+
+const breadcrumbs = [
+  { label: "ホーム", href: "/" },
+  { label: "お問い合わせ" }
+];
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <main class="pt-16">
-    <!-- ヒーローセクション -->
-    <section class="relative text-center py-20 md:py-32 px-6 overflow-hidden">
-      <!-- 背景のグラデーション -->
-      <div class="absolute inset-0 z-0 opacity-20" style="background: radial-gradient(circle at 50% 30%, rgba(100, 100, 150, 0.5), transparent 70%);"></div>
-      
-      <div class="relative z-10 container mx-auto">
-        <div class="flex justify-center mb-8">
-          <div class="w-20 h-20 bg-blue-500 bg-opacity-10 rounded-full flex items-center justify-center">
-            <svg class="w-10 h-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-            </svg>
-          </div>
-        </div>
-        <h1 class="text-4xl md:text-6xl font-black mb-8 hero-gradient-text tracking-tight font-noto">Contact</h1>
-        <p class="max-w-3xl mx-auto text-lg md:text-xl text-gray-300 mb-8 font-noto leading-relaxed">
-          お問い合わせやご質問がございましたら、お気軽にご連絡ください。
-        </p>
-      </div>
-    </section>
+  <main id="main-content" class="pt-16">
+    <!-- ページヘッダー -->
+    <PageHeader 
+      title="お問い合わせ" 
+      description="お問い合わせやご質問がございましたら、お気軽にご連絡ください。"
+      breadcrumbs={breadcrumbs}
+    />
 
     <!-- フォームセクション -->
     <section class="py-12 md:py-24">
       <div class="container mx-auto px-6">
         <div class="max-w-4xl mx-auto">
           <div class="card-bg rounded-xl p-8 md:p-12">
-            <div class="flex items-center mb-8">
-              <div class="w-12 h-12 bg-green-500 bg-opacity-10 rounded-full flex items-center justify-center mr-4">
-                <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
+            <Stack gap="large">
+              <div class="flex items-center">
+                <div class="w-12 h-12 bg-green-500 bg-opacity-10 rounded-full flex items-center justify-center mr-4">
+                  <Icon name="check" size="medium" class="text-green-400" />
+                </div>
+                <h2 class="text-2xl md:text-3xl font-bold font-noto">お問い合わせフォーム</h2>
               </div>
-              <h2 class="text-2xl md:text-3xl font-bold font-noto">お問い合わせフォーム</h2>
-            </div>
-            <p class="text-gray-300 mb-8 font-noto">
-              以下のフォームに必要事項をご記入の上、送信してください。
-            </p>
-            
-            <!-- Brevo Form -->
-            <style>
-              /* Tally.so風ダークフォームスタイル */
-              #sib-container, #sib-container * {
-                font-family: 'Noto Sans JP', 'Noto Sans', 'Helvetica Neue', Arial, 'Meiryo', sans-serif;
-                color: #e0e0e0;
-                background: none;
-              }
-              #sib-container {
-                background-color: #181818;
-                border-radius: 1.2rem;
-                box-shadow: 0 2px 24px rgba(0,0,0,0.18);
-                padding: 2.5rem 1.5rem;
-              }
-              #sib-container .entry__label {
-                color: #e0e0e0;
-                font-weight: 600;
-                margin-bottom: 0.7rem;
-                font-size: 1rem;
-              }
               
-              /* focusスタイル */
-              #sib-container input[type="text"]:focus,
-              #sib-container input[type="email"]:focus,
-              #sib-container select:focus,
-              #sib-container textarea:focus {
-                border-color: #3b82f6 !important;
-                background-color: #0f0f0f !important;
-                outline: none !important;
-                box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
-              }
+              <Message type="info">
+                以下のフォームに必要事項をご記入の上、送信してください。
+              </Message>
               
-              /* より強い指定でfocusスタイルを強制適用 */
-              #sib-container .input:focus {
-                border-color: #3b82f6 !important;
-                background-color: #0f0f0f !important;
-                outline: none !important;
-                box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
-              }
+              <!-- Brevo Form -->
+              <style>
+                /* Tally.so風ダークフォームスタイル */
+                #sib-container, #sib-container * {
+                  font-family: 'Noto Sans JP', 'Noto Sans', 'Helvetica Neue', Arial, 'Meiryo', sans-serif;
+                  color: #e0e0e0;
+                  background: none;
+                }
+                #sib-container {
+                  background-color: #181818;
+                  border-radius: 1.2rem;
+                  box-shadow: 0 2px 24px rgba(0,0,0,0.18);
+                  padding: 2.5rem 1.5rem;
+                }
+                #sib-container .entry__label {
+                  color: #e0e0e0;
+                  font-weight: 600;
+                  margin-bottom: 0.7rem;
+                  font-size: 1rem;
+                }
+                
+                /* focusスタイル */
+                #sib-container input[type="text"]:focus,
+                #sib-container input[type="email"]:focus,
+                #sib-container select:focus,
+                #sib-container textarea:focus {
+                  border-color: #3b82f6 !important;
+                  background-color: #0f0f0f !important;
+                  outline: none !important;
+                  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+                }
+                
+                /* より強い指定でfocusスタイルを強制適用 */
+                #sib-container .input:focus {
+                  border-color: #3b82f6 !important;
+                  background-color: #0f0f0f !important;
+                  outline: none !important;
+                  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+                }
+                
+                #sib-container .sib-form-block__button {
+                  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                  border-radius: 0.75rem;
+                  padding: 1rem 2.5rem;
+                  font-weight: 700;
+                  font-size: 1.1rem;
+                  color: #fff;
+                  border: none;
+                  margin-top: 1.5rem;
+                  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+                  transition: background 0.2s;
+                }
+                #sib-container .sib-form-block__button:hover {
+                  background: linear-gradient(135deg, #5a67d8 0%, #6b21a8 100%);
+                }
+                #sib-container .entry__error {
+                  border-radius: 0.5rem;
+                  padding: 0.5rem 1rem;
+                  margin-top: 0.5rem;
+                }
+                #sib-container .checkbox {
+                  border-color: #333;
+                  background-color: #222;
+                }
+                #sib-container .checkbox_tick_positive {
+                  background-color: #667eea;
+                  border-color: #667eea;
+                }
+                
+                /* optionタグのスタイル */
+                #sib-container select option[disabled] {
+                  color: #9ca3af;
+                }
+                #sib-container select option {
+                  color: #fff;
+                  background-color: #1a1a1a;
+                }
+              </style>
+              <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
               
-              #sib-container .sib-form-block__button {
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                border-radius: 0.75rem;
-                padding: 1rem 2.5rem;
-                font-weight: 700;
-                font-size: 1.1rem;
-                color: #fff;
-                border: none;
-                margin-top: 1.5rem;
-                box-shadow: 0 2px 12px rgba(0,0,0,0.12);
-                transition: background 0.2s;
-              }
-              #sib-container .sib-form-block__button:hover {
-                background: linear-gradient(135deg, #5a67d8 0%, #6b21a8 100%);
-              }
-              #sib-container .entry__error {
-                border-radius: 0.5rem;
-                padding: 0.5rem 1rem;
-                margin-top: 0.5rem;
-              }
-              #sib-container .checkbox {
-                border-color: #333;
-                background-color: #222;
-              }
-              #sib-container .checkbox_tick_positive {
-                background-color: #667eea;
-                border-color: #667eea;
-              }
-              
-              /* optionタグのスタイル */
-              #sib-container select option[disabled] {
-                color: #9ca3af;
-              }
-              #sib-container select option {
-                color: #fff;
-                background-color: #1a1a1a;
-              }
-            </style>
-            <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
-            
-            <div class="sib-form" style="text-align: center; background-color: transparent;">
-              <div id="sib-form-container" class="sib-form-container">
-                <div id="error-message" class="sib-form-message-panel" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;max-width:540px;">
-                  <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
-                    <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon">
-                      <path d="M256 40c118.621 0 216 96.075 216 216 0 119.291-96.61 216-216 216-119.244 0-216-96.562-216-216 0-119.203 96.602-216 216-216m0-32C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm-11.49 120h22.979c6.823 0 12.274 5.682 11.99 12.5l-7 168c-.268 6.428-5.556 11.5-11.99 11.5h-8.979c-6.433 0-11.722-5.073-11.99-11.5l-7-168c-.283-6.818 5.167-12.5 11.99-12.5zM256 340c-15.464 0-28 12.536-28 28s12.536 28 28 28 28-12.536 28-28-12.536-28-28-28z" />
-                    </svg>
-                    <span class="sib-form-message-panel__inner-text">
-                      エラーが発生しました。フォームの記入内容をご確認いただき、再度送信ボタンを押してください。
-                    </span>
-                  </div>
-                </div>
-                <div></div>
-                <div id="success-message" class="sib-form-message-panel" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#085229; background-color:#e7faf0; border-radius:3px; border-color:#13ce66;max-width:540px;">
-                  <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
-                    <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon">
-                      <path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 464c-118.664 0-216-96.055-216-216 0-118.663 96.055-216 216-216 118.664 0 216 96.055 216 216 0 118.663-96.055 216-216 216zm141.63-274.961L217.15 376.071c-4.705 4.667-12.303 4.637-16.97-.068l-85.878-86.572c-4.667-4.705-4.637-12.303.068-16.97l8.52-8.451c4.705-4.667 12.303-4.637 16.97.068l68.976 69.533 163.441-162.13c4.705-4.667 12.303-4.637 16.97.068l8.451 8.52c4.668 4.705 4.637 12.303-.068 16.97z" />
-                    </svg>
-                    <span class="sib-form-message-panel__inner-text">
-                      お問い合わせは正常に処理されました。
-                    </span>
-                  </div>
-                </div>
-                  <form id="sib-form" method="POST" action="https://5cfbdc72.sibforms.com/serve/MUIFAHvjaQJaD1rBrlTrhLug9ZucuH7OKFC7kuoFzpVb2pMrtd8mxrLTxAVLSw5GvNzT_lwvOtJ4ZHC_bwwj-k8e-54x6lkFsrZA0jCyxxNKee0CS_21BMmy2yj1unrqEnNIQbhElxQa4kQ5NZUT9oOSAnHTD3rlsI72qAiNfFirUFD-mggegx5aGpWLz-hh9JSIIObrFzVXbToq" data-type="subscription" onsubmit="return validateForm(event);">
-                    
-                    <!-- メールアドレス -->
-                    <div class="form-field" style="margin-bottom: 24px;">
-                      <label class="entry__label" for="EMAIL" data-required="*">メールアドレス</label>
-                      <input class="input" type="text" id="EMAIL" name="EMAIL" autocomplete="off" placeholder="Email" data-required="true" required style="background-color: #1a1a1a; color: #fff; border: 2px solid #333; border-radius: 3px; padding: 16px 20px; font-size: 16px; font-family: 'Noto Sans JP', 'Noto Sans', 'Helvetica Neue', Arial, 'Meiryo', sans-serif; width: 100%; box-sizing: border-box; transition: all 0.2s ease;" onfocus="this.style.borderColor='#3b82f6'; this.style.backgroundColor='#0f0f0f'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)'" onblur="this.style.borderColor='#333'; this.style.backgroundColor='#1a1a1a'; this.style.boxShadow='none'" />
-                      <div class="field-help">正しいメールアドレスを記入してください</div>
-                      <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
+              <div class="sib-form" style="text-align: center; background-color: transparent;">
+                <div id="sib-form-container" class="sib-form-container">
+                  <div id="error-message" class="sib-form-message-panel" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;max-width:540px;">
+                    <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+                      <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon">
+                        <path d="M256 40c118.621 0 216 96.075 216 216 0 119.291-96.61 216-216 216-119.244 0-216-96.562-216-216 0-119.203 96.602-216 216-216m0-32C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm-11.49 120h22.979c6.823 0 12.274 5.682 11.99 12.5l-7 168c-.268 6.428-5.556 11.5-11.99 11.5h-8.979c-6.433 0-11.722-5.073-11.99-11.5l-7-168c-.283-6.818 5.167-12.5 11.99-12.5zM256 340c-15.464 0-28 12.536-28 28s12.536 28 28 28 28-12.536 28-28-12.536-28-28-28z" />
+                      </svg>
+                      <span class="sib-form-message-panel__inner-text">
+                        エラーが発生しました。フォームの記入内容をご確認いただき、再度送信ボタンを押してください。
+                      </span>
                     </div>
+                  </div>
+                  <div></div>
+                  <div id="success-message" class="sib-form-message-panel" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#085229; background-color:#e7faf0; border-radius:3px; border-color:#13ce66;max-width:540px;">
+                    <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+                      <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon">
+                        <path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 464c-118.664 0-216-96.055-216-216 0-118.663 96.055-216 216-216 118.664 0 216 96.055 216 216 0 118.663-96.055 216-216 216zm141.63-274.961L217.15 376.071c-4.705 4.667-12.303 4.637-16.97-.068l-85.878-86.572c-4.667-4.705-4.637-12.303.068-16.97l8.52-8.451c4.705-4.667 12.303-4.637 16.97.068l68.976 69.533 163.441-162.13c4.705-4.667 12.303-4.637 16.97.068l8.451 8.52c4.668 4.705 4.637 12.303-.068 16.97z" />
+                      </svg>
+                      <span class="sib-form-message-panel__inner-text">
+                        お問い合わせは正常に処理されました。
+                      </span>
+                    </div>
+                  </div>
+                    <form id="sib-form" method="POST" action="https://5cfbdc72.sibforms.com/serve/MUIFAHvjaQJaD1rBrlTrhLug9ZucuH7OKFC7kuoFzpVb2pMrtd8mxrLTxAVLSw5GvNzT_lwvOtJ4ZHC_bwwj-k8e-54x6lkFsrZA0jCyxxNKee0CS_21BMmy2yj1unrqEnNIQbhElxQa4kQ5NZUT9oOSAnHTD3rlsI72qAiNfFirUFD-mggegx5aGpWLz-hh9JSIIObrFzVXbToq" data-type="subscription" onsubmit="return validateForm(event);">
+                      
+                      <!-- メールアドレス -->
+                      <div class="form-field" style="margin-bottom: 24px;">
+                        <label class="entry__label" for="EMAIL" data-required="*">メールアドレス</label>
+                        <input class="input" type="text" id="EMAIL" name="EMAIL" autocomplete="off" placeholder="Email" data-required="true" required style="background-color: #1a1a1a; color: #fff; border: 2px solid #333; border-radius: 3px; padding: 16px 20px; font-size: 16px; font-family: 'Noto Sans JP', 'Noto Sans', 'Helvetica Neue', Arial, 'Meiryo', sans-serif; width: 100%; box-sizing: border-box; transition: all 0.2s ease;" onfocus="this.style.borderColor='#3b82f6'; this.style.backgroundColor='#0f0f0f'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)'" onblur="this.style.borderColor='#333'; this.style.backgroundColor='#1a1a1a'; this.style.boxShadow='none'" />
+                        <div class="field-help">正しいメールアドレスを記入してください</div>
+                        <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
+                      </div>
 
-                    <!-- 氏名（横並び） -->
-                    <div class="form-field-group" style="margin-bottom: 24px;">
-                      <div class="name-fields" style="display: flex; gap: 16px;">
-                        <!-- 氏 -->
-                        <div class="name-field" style="flex: 1;">
-                          <label class="entry__label" for="LASTNAME" data-required="*">氏</label>
-                          <input class="input" maxlength="200" type="text" id="LASTNAME" name="LASTNAME" autocomplete="off" placeholder="模擬" data-required="true" required style="background-color: #1a1a1a; color: #fff; border: 2px solid #333; border-radius: 3px; padding: 16px 16px; font-size: 16px; font-family: 'Noto Sans JP', 'Noto Sans', 'Helvetica Neue', Arial, 'Meiryo', sans-serif; width: 100%; box-sizing: border-box; transition: all 0.2s ease;" onfocus="this.style.borderColor='#3b82f6'; this.style.backgroundColor='#0f0f0f'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)'" onblur="this.style.borderColor='#333'; this.style.backgroundColor='#1a1a1a'; this.style.boxShadow='none'" />
-                          <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
-                        </div>
-                        <!-- 名 -->
-                        <div class="name-field" style="flex: 1;">
-                          <label class="entry__label" for="FIRSTNAME" data-required="*">名</label>
-                          <input class="input" maxlength="200" type="text" id="FIRSTNAME" name="FIRSTNAME" autocomplete="off" placeholder="太郎" data-required="true" required style="background-color: #1a1a1a; color: #fff; border: 2px solid #333; border-radius: 3px; padding: 16px 16px; font-size: 16px; font-family: 'Noto Sans JP', 'Noto Sans', 'Helvetica Neue', Arial, 'Meiryo', sans-serif; width: 100%; box-sizing: border-box; transition: all 0.2s ease;" onfocus="this.style.borderColor='#3b82f6'; this.style.backgroundColor='#0f0f0f'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)'" onblur="this.style.borderColor='#333'; this.style.backgroundColor='#1a1a1a'; this.style.boxShadow='none'" />
-                          <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
+                      <!-- 氏名（横並び） -->
+                      <div class="form-field-group" style="margin-bottom: 24px;">
+                        <div class="name-fields" style="display: flex; gap: 16px;">
+                          <!-- 氏 -->
+                          <div class="name-field" style="flex: 1;">
+                            <label class="entry__label" for="LASTNAME" data-required="*">氏</label>
+                            <input class="input" maxlength="200" type="text" id="LASTNAME" name="LASTNAME" autocomplete="off" placeholder="模擬" data-required="true" required style="background-color: #1a1a1a; color: #fff; border: 2px solid #333; border-radius: 3px; padding: 16px 16px; font-size: 16px; font-family: 'Noto Sans JP', 'Noto Sans', 'Helvetica Neue', Arial, 'Meiryo', sans-serif; width: 100%; box-sizing: border-box; transition: all 0.2s ease;" onfocus="this.style.borderColor='#3b82f6'; this.style.backgroundColor='#0f0f0f'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)'" onblur="this.style.borderColor='#333'; this.style.backgroundColor='#1a1a1a'; this.style.boxShadow='none'" />
+                            <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
+                          </div>
+                          <!-- 名 -->
+                          <div class="name-field" style="flex: 1;">
+                            <label class="entry__label" for="FIRSTNAME" data-required="*">名</label>
+                            <input class="input" maxlength="200" type="text" id="FIRSTNAME" name="FIRSTNAME" autocomplete="off" placeholder="太郎" data-required="true" required style="background-color: #1a1a1a; color: #fff; border: 2px solid #333; border-radius: 3px; padding: 16px 16px; font-size: 16px; font-family: 'Noto Sans JP', 'Noto Sans', 'Helvetica Neue', Arial, 'Meiryo', sans-serif; width: 100%; box-sizing: border-box; transition: all 0.2s ease;" onfocus="this.style.borderColor='#3b82f6'; this.style.backgroundColor='#0f0f0f'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)'" onblur="this.style.borderColor='#333'; this.style.backgroundColor='#1a1a1a'; this.style.boxShadow='none'" />
+                            <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
+                          </div>
                         </div>
                       </div>
-                    </div>
 
-                    <!-- 所属 -->
-                    <div class="form-field" style="margin-bottom: 24px;">
-                      <label class="entry__label" for="JOB_TITLE" data-required="*">所属</label>
-                      <input class="input" maxlength="200" type="text" id="JOB_TITLE" name="JOB_TITLE" autocomplete="off" placeholder="模擬国連高校" data-required="true" required style="background-color: #1a1a1a; color: #fff; border: 2px solid #333; border-radius: 3px; padding: 16px 20px; font-size: 16px; font-family: 'Noto Sans JP', 'Noto Sans', 'Helvetica Neue', Arial, 'Meiryo', sans-serif; width: 100%; box-sizing: border-box; transition: all 0.2s ease;" onfocus="this.style.borderColor='#3b82f6'; this.style.backgroundColor='#0f0f0f'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)'" onblur="this.style.borderColor='#333'; this.style.backgroundColor='#1a1a1a'; this.style.boxShadow='none'" />
-                      <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
-                    </div>
+                      <!-- 所属 -->
+                      <div class="form-field" style="margin-bottom: 24px;">
+                        <label class="entry__label" for="JOB_TITLE" data-required="*">所属</label>
+                        <input class="input" maxlength="200" type="text" id="JOB_TITLE" name="JOB_TITLE" autocomplete="off" placeholder="模擬国連高校" data-required="true" required style="background-color: #1a1a1a; color: #fff; border: 2px solid #333; border-radius: 3px; padding: 16px 20px; font-size: 16px; font-family: 'Noto Sans JP', 'Noto Sans', 'Helvetica Neue', Arial, 'Meiryo', sans-serif; width: 100%; box-sizing: border-box; transition: all 0.2s ease;" onfocus="this.style.borderColor='#3b82f6'; this.style.backgroundColor='#0f0f0f'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)'" onblur="this.style.borderColor='#333'; this.style.backgroundColor='#1a1a1a'; this.style.boxShadow='none'" />
+                        <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
+                      </div>
 
-                    <!-- お問い合わせ内容 -->
-                    <div class="form-field" style="margin-bottom: 24px;">
-                      <label class="entry__label" for="INQUIRY_TYPE" data-required="*">お問い合わせ内容</label>
-                      <select class="input" id="INQUIRY_TYPE" name="INQUIRY_TYPE" data-required="true" style="background-color: #1a1a1a; border: 2px solid #333; border-radius: 3px; font-size: 16px; font-family: 'Noto Sans JP', 'Noto Sans', 'Helvetica Neue', Arial, 'Meiryo', sans-serif; width: 100%; box-sizing: border-box; transition: all 0.2s ease; padding: 0px 20px;" onfocus="this.style.borderColor='#3b82f6'; this.style.backgroundColor='#0f0f0f'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)'" onblur="this.style.borderColor='#333'; this.style.backgroundColor='#1a1a1a'; this.style.boxShadow='none'">
-                        <option value="" disabled selected hidden style="color: #9ca3af !important;">選択してください</option>
-                        <option value="1">内容に関するお問い合わせ</option>
-                        <option value="2">新記事・コンテンツのリクエスト</option>
-                        <option value="3">営業・取材</option>
-                        <option value="4">その他</option>
-                      </select>
-                      <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
-                    </div>
+                      <!-- お問い合わせ内容 -->
+                      <div class="form-field" style="margin-bottom: 24px;">
+                        <label class="entry__label" for="INQUIRY_TYPE" data-required="*">お問い合わせ内容</label>
+                        <select class="input" id="INQUIRY_TYPE" name="INQUIRY_TYPE" data-required="true" style="background-color: #1a1a1a; border: 2px solid #333; border-radius: 3px; font-size: 16px; font-family: 'Noto Sans JP', 'Noto Sans', 'Helvetica Neue', Arial, 'Meiryo', sans-serif; width: 100%; box-sizing: border-box; transition: all 0.2s ease; padding: 0px 20px;" onfocus="this.style.borderColor='#3b82f6'; this.style.backgroundColor='#0f0f0f'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)'" onblur="this.style.borderColor='#333'; this.style.backgroundColor='#1a1a1a'; this.style.boxShadow='none'">
+                          <option value="" disabled selected hidden style="color: #9ca3af !important;">選択してください</option>
+                          <option value="1">内容に関するお問い合わせ</option>
+                          <option value="2">新記事・コンテンツのリクエスト</option>
+                          <option value="3">営業・取材</option>
+                          <option value="4">その他</option>
+                        </select>
+                        <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
+                      </div>
 
-                    <!-- 詳細内容 -->
-                    <div class="form-field" style="margin-bottom: 24px;">
-                      <textarea class="input" rows="4" maxlength="500" id="CONTENT" name="CONTENT" autocomplete="off" data-required="true" required style="background-color: #1a1a1a; color: #fff; border: 2px solid #333; border-radius: 3px; padding: 16px 20px; font-size: 16px; font-family: 'Noto Sans JP', 'Noto Sans', 'Helvetica Neue', Arial, 'Meiryo', sans-serif; width: 100%; box-sizing: border-box; transition: all 0.2s ease; min-height: 120px; resize: vertical;" onfocus="this.style.borderColor='#3b82f6'; this.style.backgroundColor='#0f0f0f'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)'" onblur="this.style.borderColor='#333'; this.style.backgroundColor='#1a1a1a'; this.style.boxShadow='none'"></textarea>
-                      <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
-                    </div>
+                      <!-- 詳細内容 -->
+                      <div class="form-field" style="margin-bottom: 24px;">
+                        <textarea class="input" rows="4" maxlength="500" id="CONTENT" name="CONTENT" autocomplete="off" data-required="true" required style="background-color: #1a1a1a; color: #fff; border: 2px solid #333; border-radius: 3px; padding: 16px 20px; font-size: 16px; font-family: 'Noto Sans JP', 'Noto Sans', 'Helvetica Neue', Arial, 'Meiryo', sans-serif; width: 100%; box-sizing: border-box; transition: all 0.2s ease; min-height: 120px; resize: vertical;" onfocus="this.style.borderColor='#3b82f6'; this.style.backgroundColor='#0f0f0f'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)'" onblur="this.style.borderColor='#333'; this.style.backgroundColor='#1a1a1a'; this.style.boxShadow='none'"></textarea>
+                        <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
+                      </div>
 
-                    <!-- プライバシーポリシー同意 -->
-                    <div class="form-field text-center" style="margin-bottom: 32px;">
-                      <label class="checkbox-label">
-                        <input type="checkbox" value="1" id="OPT_IN" name="OPT_IN" required />
-                        <span>当サイトの<a href="/privacy-policy" target="_blank">プライバシー・ポリシー</a>に同意する</span>
-                          </label>
-                      <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
-                    </div>
+                      <!-- プライバシーポリシー同意 -->
+                      <div class="form-field text-center" style="margin-bottom: 32px;">
+                        <label class="checkbox-label">
+                          <input type="checkbox" value="1" id="OPT_IN" name="OPT_IN" required />
+                          <span>当サイトの<a href="/privacy-policy" target="_blank">プライバシー・ポリシー</a>に同意する</span>
+                            </label>
+                        <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
+                      </div>
 
-                    <!-- reCAPTCHA -->
-                    <div class="g-recaptcha-v3" data-sitekey="6Ld3VpUrAAAAADwgcnAxTo9syC02nsywR_8IaTgh" style="display: none"></div>
+                      <!-- reCAPTCHA -->
+                      <div class="g-recaptcha-v3" data-sitekey="6Ld3VpUrAAAAADwgcnAxTo9syC02nsywR_8IaTgh" style="display: none"></div>
 
-                    <!-- 送信ボタン -->
-                    <div class="form-field text-center" style="margin-bottom: 16px;">
-                      <button class="sib-form-block__button" form="sib-form" type="submit" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; border-radius: 0.75rem; padding: 1rem 2.5rem; font-weight: 700; font-size: 1.1rem; border: none; margin-top: 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.12); transition: background 0.2s; font-family: 'Noto Sans JP', 'Noto Sans', 'Helvetica Neue', Arial, 'Meiryo', sans-serif;">
-                          送信 / Submit
-                        </button>
-                    </div>
-            
-                    <input type="text" name="email_address_check" value="" class="input--hidden">
-                    <input type="hidden" name="locale" value="en">
-                  </form>
-            
-            <script>
-              // @ts-ignore
-              window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
-              // @ts-ignore
-              window.LOCALE = 'en';
-              // @ts-ignore
-              window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "不具合が発生しました。フォームの記入内容をご確認いただき、再度送信ボタンを押してください。";
-            
-              // @ts-ignore
-              window.REQUIRED_ERROR_MESSAGE = "この項目は必須項目です。 ";
-            
-              // @ts-ignore
-              window.GENERIC_INVALID_MESSAGE = "不具合が発生しました。フォームの記入内容をご確認いただき、再度送信ボタンを押してください。";
-            
-              // @ts-ignore
-              window.translation = {
-                common: {
-                  selectedList: '{quantity} list selected',
-                  selectedLists: '{quantity} lists selected',
-                  selectedOption: '{quantity} selected',
-                  selectedOptions: '{quantity} selected',
-                }
-              };
-            
-              var AUTOHIDE = Boolean(0);
-
-              // エラー表示をクリアする関数
-              function clearErrors() {
-                const errorLabels = document.querySelectorAll('.entry__error');
-                errorLabels.forEach(label => {
-                  (label as HTMLElement).textContent = '';
-                  (label as HTMLElement).style.display = 'none';
-                });
-                
-                // 入力フィールドのエラー表示をクリア
-                const inputs = document.querySelectorAll('.input');
-                inputs.forEach(input => {
-                  (input as HTMLElement).style.borderColor = '#333';
-                  (input as HTMLElement).style.backgroundColor = '#1a1a1a';
-                  (input as HTMLElement).style.boxShadow = 'none';
-                });
-              }
+                      <!-- 送信ボタン -->
+                      <div class="form-field text-center" style="margin-bottom: 16px;">
+                        <button class="sib-form-block__button" form="sib-form" type="submit" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; border-radius: 0.75rem; padding: 1rem 2.5rem; font-weight: 700; font-size: 1.1rem; border: none; margin-top: 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.12); transition: background 0.2s; font-family: 'Noto Sans JP', 'Noto Sans', 'Helvetica Neue', Arial, 'Meiryo', sans-serif;">
+                            送信 / Submit
+                          </button>
+                      </div>
               
-              // エラー表示を設定する関数
-              function showError(element: HTMLElement, message: string) {
-                // エラーラベルを表示
-                const errorLabel = element.parentElement?.querySelector('.entry__error') as HTMLElement;
-                if (errorLabel) {
-                  errorLabel.textContent = message;
-                  errorLabel.style.display = 'block';
-                }
-                
-                // 入力フィールドをエラー表示
-                if (element instanceof HTMLInputElement || element instanceof HTMLSelectElement || element instanceof HTMLTextAreaElement) {
-                  element.style.borderColor = '#ef4444';
-                  element.style.backgroundColor = '#1a1a1a';
-                  element.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, 0.1)';
-                }
-              }
+                      <input type="text" name="email_address_check" value="" class="input--hidden">
+                      <input type="hidden" name="locale" value="en">
+                    </form>
               
-              // フォームバリデーション関数
-              function validateForm(event) {
-                event.preventDefault();
+              <script>
+                // @ts-ignore
+                window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
+                // @ts-ignore
+                window.LOCALE = 'en';
+                // @ts-ignore
+                window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "不具合が発生しました。フォームの記入内容をご確認いただき、再度送信ボタンを押してください。";
+              
+                // @ts-ignore
+                window.REQUIRED_ERROR_MESSAGE = "この項目は必須項目です。 ";
+              
+                // @ts-ignore
+                window.GENERIC_INVALID_MESSAGE = "不具合が発生しました。フォームの記入内容をご確認いただき、再度送信ボタンを押してください。";
+              
+                // @ts-ignore
+                window.translation = {
+                  common: {
+                    selectedList: '{quantity} list selected',
+                    selectedLists: '{quantity} lists selected',
+                    selectedOption: '{quantity} selected',
+                    selectedOptions: '{quantity} selected',
+                  }
+                };
+              
+                var AUTOHIDE = Boolean(0);
+
+                // エラー表示をクリアする関数
+                function clearErrors() {
+                  const errorLabels = document.querySelectorAll('.entry__error');
+                  errorLabels.forEach(label => {
+                    (label as HTMLElement).textContent = '';
+                    (label as HTMLElement).style.display = 'none';
+                  });
+                  
+                  // 入力フィールドのエラー表示をクリア
+                  const inputs = document.querySelectorAll('.input');
+                  inputs.forEach(input => {
+                    (input as HTMLElement).style.borderColor = '#333';
+                    (input as HTMLElement).style.backgroundColor = '#1a1a1a';
+                    (input as HTMLElement).style.boxShadow = 'none';
+                  });
+                }
                 
-                // エラー表示をクリア
-                clearErrors();
-                
-                const email = document.getElementById('EMAIL') as HTMLInputElement;
-                const lastName = document.getElementById('LASTNAME') as HTMLInputElement;
-                const firstName = document.getElementById('FIRSTNAME') as HTMLInputElement;
-                const jobTitle = document.getElementById('JOB_TITLE') as HTMLInputElement;
-                const inquiryType = document.getElementById('INQUIRY_TYPE') as HTMLSelectElement;
-                const content = document.getElementById('CONTENT') as HTMLTextAreaElement;
-                const optIn = document.getElementById('OPT_IN') as HTMLInputElement;
-                
-                let isValid = true;
-                
-                // メールアドレスのバリデーション
-                if (!email || !email.value.trim()) {
-                  showError(email, 'メールアドレスを入力してください。');
-                  email?.focus();
-                  isValid = false;
-                } else {
-                  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                  if (!emailRegex.test(email.value.trim())) {
-                    showError(email, '正しいメールアドレスを入力してください。');
-                    email?.focus();
-                    isValid = false;
+                // エラー表示を設定する関数
+                function showError(element: HTMLElement, message: string) {
+                  // エラーラベルを表示
+                  const errorLabel = element.parentElement?.querySelector('.entry__error') as HTMLElement;
+                  if (errorLabel) {
+                    errorLabel.textContent = message;
+                    errorLabel.style.display = 'block';
+                  }
+                  
+                  // 入力フィールドをエラー表示
+                  if (element instanceof HTMLInputElement || element instanceof HTMLSelectElement || element instanceof HTMLTextAreaElement) {
+                    element.style.borderColor = '#ef4444';
+                    element.style.backgroundColor = '#1a1a1a';
+                    element.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, 0.1)';
                   }
                 }
                 
-                // 氏名のバリデーション
-                if (!lastName || !lastName.value.trim()) {
-                  showError(lastName, '氏を入力してください。');
-                  lastName?.focus();
-                  isValid = false;
-                }
-                
-                if (!firstName || !firstName.value.trim()) {
-                  showError(firstName, '名を入力してください。');
-                  firstName?.focus();
-                  isValid = false;
-                }
-                
-                // 所属のバリデーション
-                if (!jobTitle || !jobTitle.value.trim()) {
-                  showError(jobTitle, '所属を入力してください。');
-                  jobTitle?.focus();
-                  isValid = false;
-                }
-                
-                // お問い合わせ内容のバリデーション
-                if (!inquiryType || !inquiryType.value) {
-                  showError(inquiryType, 'お問い合わせ内容を選択してください。');
-                  inquiryType?.focus();
-                  isValid = false;
-                }
-                
-                // 詳細内容のバリデーション
-                if (!content || !content.value.trim()) {
-                  showError(content, '詳細内容を入力してください。');
-                  content?.focus();
-                  isValid = false;
-                }
-                
-                // プライバシーポリシー同意のバリデーション
-                if (!optIn || !optIn.checked) {
-                  showError(optIn, 'プライバシー・ポリシーに同意してください。');
-                  optIn?.focus();
-                  isValid = false;
-                }
-                
-                // すべてのバリデーションが通った場合、フォームを送信
-                if (isValid) {
-                  // 1秒後にthanksページにリダイレクト
-                  setTimeout(function(){ 
-                    window.location.href='/thanks'; 
-                  }, 1000);
+                // フォームバリデーション関数
+                function validateForm(event) {
+                  event.preventDefault();
                   
-                  // フォームを送信
-                  return true;
+                  // エラー表示をクリア
+                  clearErrors();
+                  
+                  const email = document.getElementById('EMAIL') as HTMLInputElement;
+                  const lastName = document.getElementById('LASTNAME') as HTMLInputElement;
+                  const firstName = document.getElementById('FIRSTNAME') as HTMLInputElement;
+                  const jobTitle = document.getElementById('JOB_TITLE') as HTMLInputElement;
+                  const inquiryType = document.getElementById('INQUIRY_TYPE') as HTMLSelectElement;
+                  const content = document.getElementById('CONTENT') as HTMLTextAreaElement;
+                  const optIn = document.getElementById('OPT_IN') as HTMLInputElement;
+                  
+                  let isValid = true;
+                  
+                  // メールアドレスのバリデーション
+                  if (!email || !email.value.trim()) {
+                    showError(email, 'メールアドレスを入力してください。');
+                    email?.focus();
+                    isValid = false;
+                  } else {
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(email.value.trim())) {
+                      showError(email, '正しいメールアドレスを入力してください。');
+                      email?.focus();
+                      isValid = false;
+                    }
+                  }
+                  
+                  // 氏名のバリデーション
+                  if (!lastName || !lastName.value.trim()) {
+                    showError(lastName, '氏を入力してください。');
+                    lastName?.focus();
+                    isValid = false;
+                  }
+                  
+                  if (!firstName || !firstName.value.trim()) {
+                    showError(firstName, '名を入力してください。');
+                    firstName?.focus();
+                    isValid = false;
+                  }
+                  
+                  // 所属のバリデーション
+                  if (!jobTitle || !jobTitle.value.trim()) {
+                    showError(jobTitle, '所属を入力してください。');
+                    jobTitle?.focus();
+                    isValid = false;
+                  }
+                  
+                  // お問い合わせ内容のバリデーション
+                  if (!inquiryType || !inquiryType.value) {
+                    showError(inquiryType, 'お問い合わせ内容を選択してください。');
+                    inquiryType?.focus();
+                    isValid = false;
+                  }
+                  
+                  // 詳細内容のバリデーション
+                  if (!content || !content.value.trim()) {
+                    showError(content, '詳細内容を入力してください。');
+                    content?.focus();
+                    isValid = false;
+                  }
+                  
+                  // プライバシーポリシー同意のバリデーション
+                  if (!optIn || !optIn.checked) {
+                    showError(optIn, 'プライバシー・ポリシーに同意してください。');
+                    optIn?.focus();
+                    isValid = false;
+                  }
+                  
+                  // すべてのバリデーションが通った場合、フォームを送信
+                  if (isValid) {
+                    // 1秒後にthanksページにリダイレクト
+                    setTimeout(function(){ 
+                      window.location.href='/thanks'; 
+                    }, 1000);
+                    
+                    // フォームを送信
+                    return true;
+                  }
+                  
+                  return false;
                 }
-                
-                return false;
-              }
-            </script>
-            
-            <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
-            
-            <script src="https://www.google.com/recaptcha/api.js?render=6Ld3VpUrAAAAADwgcnAxTo9syC02nsywR_8IaTgh&hl=en" async defer></script>
+              </script>
+              
+              <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
+              
+              <script src="https://www.google.com/recaptcha/api.js?render=6Ld3VpUrAAAAADwgcnAxTo9syC02nsywR_8IaTgh&hl=en" async defer></script>
+            </div>
           </div>
         </div>
       </div>

@@ -1,0 +1,28 @@
+---
+export interface Props {
+  gap?: 'small' | 'medium' | 'large';
+  align?: 'start' | 'center' | 'end' | 'stretch';
+  class?: string;
+}
+
+const { gap = 'medium', align = 'stretch', class: className = '' } = Astro.props;
+
+const gapClasses = {
+  small: 'space-y-2',
+  medium: 'space-y-4',
+  large: 'space-y-8'
+};
+
+const alignClasses = {
+  start: 'items-start',
+  center: 'items-center',
+  end: 'items-end',
+  stretch: 'items-stretch'
+};
+
+const classes = `flex flex-col ${gapClasses[gap]} ${alignClasses[align]} ${className}`;
+---
+
+<div class={classes}>
+  <slot />
+</div> 

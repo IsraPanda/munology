@@ -1,0 +1,51 @@
+---
+export interface Props {
+  label: string;
+  required?: boolean;
+  error?: string;
+  helpText?: string;
+  id?: string;
+  ariaDescribedBy?: string;
+}
+
+const { label, required = false, error, helpText, id, ariaDescribedBy } = Astro.props;
+
+const fieldId = id || `field-${Math.random().toString(36).substr(2, 9)}`;
+const helpTextId = helpText ? `${fieldId}-help` : undefined;
+const errorId = error ? `${fieldId}-error` : undefined;
+const describedBy = [ariaDescribedBy, helpTextId, errorId].filter(Boolean).join(' ');
+---
+
+<div class="form-field mb-6">
+  <label 
+    for={fieldId} 
+    class="block text-sm font-medium text-gray-200 mb-2"
+  >
+    {label}
+    {required && <span class="text-red-400 ml-1" aria-label="必須項目">*</span>}
+  </label>
+  
+  <div aria-describedby={describedBy || undefined}>
+    <slot />
+  </div>
+  
+  {helpText && (
+    <p id={helpTextId} class="mt-1 text-sm text-gray-400">
+      {helpText}
+    </p>
+  )}
+  
+  {error && (
+    <p 
+      id={errorId} 
+      class="mt-1 text-sm text-red-400 flex items-center" 
+      role="alert"
+      aria-live="polite"
+    >
+      <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+      </svg>
+      {error}
+    </p>
+  )}
+</div> 
